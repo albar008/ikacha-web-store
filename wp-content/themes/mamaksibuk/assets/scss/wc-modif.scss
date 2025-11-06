@@ -1,0 +1,22 @@
+header {
+  .navbar {
+    position: static;
+    background-color: #333 !important;
+  }
+}
+
+.home {
+  header {
+    .navbar {
+      position: fixed;
+    }
+  }
+}
+
+.sticky {
+  &.sticky-active {
+    .navbar {
+      position: fixed;
+    }
+  }
+}
