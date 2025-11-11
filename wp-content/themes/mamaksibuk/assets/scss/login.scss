@@ -1,0 +1,27 @@
+
+.login {
+
+  h1 {
+    >a {
+      background-image: url('../images/mamak-sibuk-logo-login.png');
+      height: 50px;
+      background-size: 200px;
+      width: 200px;
+    }
+  }
+}
+
+.login {
+  &.interim-login {
+    background-color: inherit;
+
+    h1 {
+      >a {
+        background-image: url('../images/mamak-sibuk-logo-login.png');
+        height: 50px;
+        background-size: 200px;
+        width: 200px;
+      }
+    }
+  }
+}

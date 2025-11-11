@@ -9,13 +9,14 @@ get_header();
       <div class="col-md-7 position-relative h-100 order-2 order-md-1">
         <div class="position-absolute sm-position-relative left-0px bottom-0px md-bottom-25px p-2 z-index-2"
           data-anime='{ "el": "childs", "translateY": [30, 0], "perspective": [500,1200], "scale": [1.05, 1], "rotateY": [-40, 0], "opacity": [0,1], "duration": 800, "delay": 100, "staggervalue": 200, "easing": "easeOutQuad" }'>
-          <img src="https://placehold.co/900x1162" alt="">
+          <img src="<?php echo get_theme_file_uri('assets/images/no-marriege-is-perfect-cover.png') ?>"
+            alt="No Marriege Is Perfect Book Cover">
         </div>
       </div>
       <div class="col-md-5 md-mb-70px sm-mb-40px sm-mt-50px position-relative text-white order-1 order-md-2"
         data-anime='{ "el": "childs", "opacity": [0, 1], "translateX": [100, 0], "staggervalue": 300, "easing": "easeOutQuad" }'>
         <h1 class="alt-font fw-400 fs-100 lg-fs-80 sm-fs-65 text-uppercase mb-35px sm-mb-25px ls-minus-2px">
-          <span>Sell your book</span>
+          <span>Sell the book</span>
           <div class="highlight-separator" data-shadow-animation="true" data-animation-delay="500">fast<span><img
                 src="<?php echo get_theme_file_uri('assets/images/highlight-separator-ebook.svg') ?>" alt=""></span>
           </div>
@@ -32,8 +33,9 @@ get_header();
             class="feature-box-icon feature-box-icon-rounded w-60px h-60px rounded-circle bg-black-transparent-light me-10px text-center lh-30">
             <i class="bi bi-people icon-extra-medium text-white"></i>
           </div>
-          <div class="feature-box-content last-paragraph-no-margin text-mountain-gray fs-17 lh-26">Read by over <span
-              class="text-white text-decoration-line-bottom">60,000+</span> fashion designers.</div>
+          <div class="feature-box-content last-paragraph-no-margin text-mountain-gray fs-17 lh-26">Trusted by over <span
+              class="text-white text-decoration-line-bottom">60,000+</span> couples to overcome marriage challenges.
+          </div>
         </div>
       </div>
     </div>
@@ -49,9 +51,11 @@ get_header();
   style="background-image: url('<?php echo get_theme_file_uri('assets/images/vertical-line-bg-medium-gray.svg') ?>')">
   <div class="container overlap-gap-section position-relative">
     <div class="position-absolute top-50px right-minus-50px lg-right-minus-20px d-none d-md-inline-block"><img
-        src="https://placehold.co/140x140" data-bottom-top="transform: rotate(-10deg) translateY(50px)"
+        src="<?php echo get_theme_file_uri('assets/images/thumbs-up.png') ?>"
+        data-bottom-top="transform: rotate(-10deg) translateY(50px)"
         data-top-bottom="transform:rotate(10deg) translateY(-50px)" alt="" /></div>
-    <div class="position-absolute bottom-40px md-bottom-60px left-minus-50px"><img src="https://placehold.co/150x86"
+    <div class="position-absolute bottom-40px md-bottom-60px left-minus-50px"><img
+        src="<?php echo get_theme_file_uri('assets/images/trophy.png') ?>"
         data-bottom-top="transform: rotate(10deg) translateX(50px)"
         data-top-bottom="transform:rotate(-10deg) translateX(-50px)" alt="" /></div>
     <div class="row mb-3">
@@ -267,20 +271,20 @@ get_header();
               <span class="btn-double-text fw-400" data-text="Purchase now!">Purchase now!</span>
             </span>
           </a>
-          <div class="d-inline-block align-middle">
+          <!-- <div class="d-inline-block align-middle">
             <div class="fs-18 ls-1px text-base-color lh-26">
               <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                 class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
             </div>
             <a href="#reviews" class="btn btn-link fs-16 text-dark-gray fw-500 thin section-link">Readers saying?<span
                 class="bg-dark-gray"></span></a>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="col-lg-6 offset-lg-1 col-md-5"
         data-anime='{ "el": "childs", "translateX": [100, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
         <div class="outside-box-right-50">
-          <img src="https://placehold.co/1295x730" alt="">
+          <img src="<?php echo get_theme_file_uri('assets/images/no-marriege-is-perfect-cover-ver.png') ?>" alt="">
         </div>
       </div>
     </div>
@@ -292,25 +296,27 @@ get_header();
   class="pb-0 border-bottom border-1 border-color-extra-medium-gray position-relative overflow-hidden accordion-bodybackground-position-center-top"
   style="background-image: url('<?php echo get_theme_file_uri('assets/images/vertical-line-bg-medium-gray.svg') ?>')">
   <div class="container position-relative">
-    <div class="position-absolute bottom-150px left-minus-50px z-index-2"><img src="https://placehold.co/150x86"
+    <div class="position-absolute bottom-150px left-minus-50px z-index-2"><img src="<?php echo get_theme_file_uri('assets/images/shape-photo-2.webp') ?>"
         data-bottom-top="transform: rotate(10deg) translateX(50px)"
         data-top-bottom="transform:rotate(-10deg) translateX(-50px)" alt="" /></div>
     <div class="position-absolute top-0px lg-left-minus-150px left-minus-50px z-index-2 d-none d-lg-block"><img
-        src="https://placehold.co/650x391" data-bottom-top="transform: rotate(20deg) translateY(50px)"
+        src="<?php echo get_theme_file_uri('assets/images/shape-photo-1.webp') ?>"
+        data-bottom-top="transform: rotate(20deg) translateY(50px)"
         data-top-bottom="transform:rotate(-20deg) translateY(-50px)" alt="" /></div>
     <div class="row align-items-end align-items-lg-center">
       <div class="col-md-6 order-2 order-md-1">
-        <img class="w-100 position-relative bottom-minus-1px" src="https://placehold.co/610x615" alt="">
+        <img class="w-100 position-relative bottom-minus-1px"
+          src="<?php echo get_theme_file_uri('assets/images/author.png') ?>" alt="Author's Photo">
       </div>
       <div
         class="col-lg-5 offset-lg-1 col-md-6 order-1 order-md-2 last-paragraph-no-margin position-relative z-index-2 text-center text-md-start lg-mb-50px sm-mb-35px"
         data-anime='{ "el": "childs", "translateY": [30, 0], "translateX": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
         <span
           class="text-base-color fs-90 mb-10px d-block text-uppercase fancy-text-style-4 ls-minus-2px fw-600 alt-font">Hello!</span>
-        <h3 class="fw-500 alt-font text-dark-gray text-uppercase ls-minus-1px mb-25px">I'm Herman miller</h3>
+        <h3 class="fw-500 alt-font text-dark-gray text-uppercase ls-minus-1px mb-25px">I'm Ikacha Ibrahim</h3>
         <p class="w-75 lg-w-100 mb-25px">Lorem ipsum dolor amet consectetur adipiscing elit sed eiusmod incididunt ut
           labore et dolore magna aliqua. Lorem ipsum dolor consectetur adipiscing elit sed eiusmod incididunt.</p>
-        <img src="<?php echo get_theme_file_uri('assets/images/demo-ebook-sign.png') ?>" alt="">
+        <!-- <img src="<?php echo get_theme_file_uri('assets/images/demo-ebook-sign.png') ?>" alt=""> -->
       </div>
     </div>
   </div>
@@ -338,246 +344,12 @@ get_header();
 </section>
 <!-- end section -->
 <!-- start section -->
-<section id="reviews" class="overflow-hidden bg-gradient-very-light-gray">
-  <div class="container-fluid">
-    <div class="row justify-content-center mb-1">
-      <div class="col-lg-7 text-center">
-        <span class="d-block text-uppercase mb-5px text-base-color fw-500">Why you should buy this?</span>
-        <h2 class="fw-500 alt-font text-dark-gray text-uppercase ls-minus-2px">Readers Reviews</h2>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <div class="col-12 position-relative">
-        <div
-          class="outside-box-right-15 outside-box-left-15 lg-outside-box-right-30 lg-outside-box-left-30 md-outside-box-right-40 md-outside-box-left-40 sm-outside-box-right-0 sm-outside-box-left-0">
-          <div class="swiper magic-cursor"
-            data-slider-options='{ "slidesPerView": 1, "spaceBetween": 30, "loop": true, "autoplay": { "delay": 3000, "disableOnInteraction": false },  "pagination": { "el": ".slider-four-slide-pagination-1", "clickable": true, "dynamicBullets": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "slidesPerView": 4 }, "992": { "slidesPerView": 3 }, "768": { "slidesPerView": 3 } }, "effect": "slide" }'>
-            <div class="swiper-wrapper pt-20px pb-20px">
-              <!-- start slider item -->
-              <div class="swiper-slide">
-                <!-- start review item -->
-                <div class="review-style-05">
-                  <div class="border-radius-4px bg-white box-shadow-large last-paragraph-no-margin">
-                    <div class="d-flex align-items-center ps-45px pe-45px pt-35px pb-35px xl-p-25px">
-                      <img class="rounded-circle w-110px md-w-75px h-110px md-h-75px me-30px"
-                        src="https://placehold.co/200x200" alt="" />
-                      <p>Team of ThemeZaa has worked closely with us and never failed to follow our perfect business
-                        requirements.</p>
-                    </div>
-                    <div
-                      class="d-flex align-items-center border-top border-color-extra-medium-gray pt-15px pb-15px ps-45px pe-45px xl-ps-25px xl-pe-25px">
-                      <span class="fs-17 fw-500 text-dark-gray me-auto xs-fs-15">Herman Miller, ThemeZaa</span>
-                      <div class="review-star-icon fs-19 xs-fs-15">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- end review item -->
-              </div>
-              <!-- end slider item -->
-              <!-- start slider item -->
-              <div class="swiper-slide">
-                <!-- start review item -->
-                <div class="review-style-05">
-                  <div class="border-radius-4px bg-white box-shadow-large last-paragraph-no-margin">
-                    <div class="d-flex align-items-center ps-45px pe-45px pt-35px pb-35px xl-p-25px">
-                      <img class="rounded-circle w-110px md-w-75px h-110px md-h-75px me-30px"
-                        src="https://placehold.co/200x200" alt="" />
-                      <p>I personally enjoyed the energy and the professional support the whole team gave to us into
-                        creating website.</p>
-                    </div>
-                    <div
-                      class="d-flex align-items-center border-top border-color-extra-medium-gray pt-15px pb-15px ps-45px pe-45px xl-ps-25px xl-pe-25px">
-                      <span class="fs-17 fw-500 text-dark-gray me-auto xs-fs-15">Matthew Taylor, ThemeZaa</span>
-                      <div class="review-star-icon fs-19 xs-fs-15">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- end review item -->
-              </div>
-              <!-- end slider item -->
-              <!-- start slider item -->
-              <div class="swiper-slide">
-                <!-- start review item -->
-                <div class="review-style-05">
-                  <div class="border-radius-4px bg-white box-shadow-large last-paragraph-no-margin">
-                    <div class="d-flex align-items-center ps-45px pe-45px pt-35px pb-35px xl-p-25px">
-                      <img class="rounded-circle w-110px md-w-75px h-110px md-h-75px me-30px"
-                        src="https://placehold.co/148x148" alt="" />
-                      <p>They have provided superior quality of content marketing services. Very satisfied by choosing
-                        them. Thank you so much!</p>
-                    </div>
-                    <div
-                      class="d-flex align-items-center border-top border-color-extra-medium-gray pt-15px pb-15px ps-45px pe-45px xl-ps-25px xl-pe-25px">
-                      <span class="fs-17 fw-500 text-dark-gray me-auto xs-fs-15">Shoko Mugikura, ThemeZaa</span>
-                      <div class="review-star-icon fs-19 xs-fs-15">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- end review item -->
-              </div>
-              <!-- end slider item -->
-              <!-- start slider item -->
-              <div class="swiper-slide">
-                <!-- start review item -->
-                <div class="review-style-05">
-                  <div class="border-radius-4px bg-white box-shadow-large last-paragraph-no-margin">
-                    <div class="d-flex align-items-center ps-45px pe-45px pt-35px pb-35px xl-p-25px">
-                      <img class="rounded-circle w-110px md-w-75px h-110px md-h-75px me-30px"
-                        src="https://placehold.co/148x148" alt="" />
-                      <p>Trust us we looked for a very long time and wasted thousands of dollars testing other teams and
-                        outsource companies.</p>
-                    </div>
-                    <div
-                      class="d-flex align-items-center border-top border-color-extra-medium-gray pt-15px pb-15px ps-45px pe-45px xl-ps-25px xl-pe-25px">
-                      <span class="fs-17 fw-500 text-dark-gray me-auto xs-fs-15">Leonel Mooney, ThemeZaa</span>
-                      <div class="review-star-icon fs-19 xs-fs-15">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- end review item -->
-              </div>
-              <!-- end slider item -->
-              <!-- start slider item -->
-              <div class="swiper-slide">
-                <!-- start review item -->
-                <div class="review-style-05">
-                  <div class="border-radius-4px bg-white box-shadow-large last-paragraph-no-margin">
-                    <div class="d-flex align-items-center ps-45px pe-45px pt-35px pb-35px xl-p-25px">
-                      <img class="rounded-circle w-110px md-w-75px h-110px md-h-75px me-30px"
-                        src="https://placehold.co/200x200" alt="" />
-                      <p>Team of ThemeZaa has worked closely with us and never failed to follow our perfect business
-                        requirements.</p>
-                    </div>
-                    <div
-                      class="d-flex align-items-center border-top border-color-extra-medium-gray pt-15px pb-15px ps-45px pe-45px xl-ps-25px xl-pe-25px">
-                      <span class="fs-17 fw-500 text-dark-gray me-auto xs-fs-15">Herman Miller, ThemeZaa</span>
-                      <div class="review-star-icon fs-19 xs-fs-15">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- end review item -->
-              </div>
-              <!-- end slider item -->
-              <!-- start slider item -->
-              <div class="swiper-slide">
-                <!-- start review item -->
-                <div class="review-style-05">
-                  <div class="border-radius-4px bg-white box-shadow-large last-paragraph-no-margin">
-                    <div class="d-flex align-items-center ps-45px pe-45px pt-35px pb-35px xl-p-25px">
-                      <img class="rounded-circle w-110px md-w-75px h-110px md-h-75px me-30px"
-                        src="https://placehold.co/200x200" alt="" />
-                      <p>I personally enjoyed the energy and the professional support the whole team gave to us into
-                        creating website.</p>
-                    </div>
-                    <div
-                      class="d-flex align-items-center border-top border-color-extra-medium-gray pt-15px pb-15px ps-45px pe-45px xl-ps-25px xl-pe-25px">
-                      <span class="fs-17 fw-500 text-dark-gray me-auto xs-fs-15">Matthew Taylor, ThemeZaa</span>
-                      <div class="review-star-icon fs-19 xs-fs-15">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- end review item -->
-              </div>
-              <!-- end slider item -->
-              <!-- start slider item -->
-              <div class="swiper-slide">
-                <!-- start review item -->
-                <div class="review-style-05">
-                  <div class="border-radius-4px bg-white box-shadow-large last-paragraph-no-margin">
-                    <div class="d-flex align-items-center ps-45px pe-45px pt-35px pb-35px xl-p-25px">
-                      <img class="rounded-circle w-110px md-w-75px h-110px md-h-75px me-30px"
-                        src="https://placehold.co/148x148" alt="" />
-                      <p>They have provided superior quality of content marketing services. Very satisfied by choosing
-                        them. Thank you so much!</p>
-                    </div>
-                    <div
-                      class="d-flex align-items-center border-top border-color-extra-medium-gray pt-15px pb-15px ps-45px pe-45px xl-ps-25px xl-pe-25px">
-                      <span class="fs-17 fw-500 text-dark-gray me-auto xs-fs-15">Shoko Mugikura, ThemeZaa</span>
-                      <div class="review-star-icon fs-19 xs-fs-15">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- end review item -->
-              </div>
-              <!-- end slider item -->
-              <!-- start slider item -->
-              <div class="swiper-slide">
-                <!-- start review item -->
-                <div class="review-style-05">
-                  <div class="border-radius-4px bg-white box-shadow-large last-paragraph-no-margin">
-                    <div class="d-flex align-items-center ps-45px pe-45px pt-35px pb-35px xl-p-25px">
-                      <img class="rounded-circle w-110px md-w-75px h-110px md-h-75px me-30px"
-                        src="https://placehold.co/148x148" alt="" />
-                      <p>Trust us we looked for a very long time and wasted thousands of dollars testing other teams and
-                        outsource companies.</p>
-                    </div>
-                    <div
-                      class="d-flex align-items-center border-top border-color-extra-medium-gray pt-15px pb-15px ps-45px pe-45px xl-ps-25px xl-pe-25px">
-                      <span class="fs-17 fw-500 text-dark-gray me-auto xs-fs-15">Leonel Mooney, ThemeZaa</span>
-                      <div class="review-star-icon fs-19 xs-fs-15">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- end review item -->
-              </div>
-              <!-- end slider item -->
-            </div>
-          </div>
-        </div>
-        <!-- start slider pagination -->
-        <!--<div class="swiper-pagination slider-four-slide-pagination-1 swiper-pagination-style-2 swiper-pagination-clickable swiper-pagination-bullets"></div>-->
-        <!-- end slider pagination -->
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 text-center">
-        <div
-          class="d-inline-block bg-dark-gray text-white border-radius-4px ps-15px pe-15px fs-15 lh-36 ls-minus-1px me-15px sm-m-10px align-middle">
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-        </div>
-        <h6 class="text-dark-gray fw-400 mb-0 d-inline-block align-middle ls-minus-1px">Check all <span
-            class="fw-700">3,583</span> readers reviews on <a href="https://www.amazon.com/" target="_blank"><img
-              src="https://placehold.co/142x70" alt="" /></a></h6>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- end section -->
-<!-- start section -->
 <section id="subscribe" class="half-section bg-base-color">
   <div class="container position-relative">
     <div
       class="position-absolute left-0px top-minus-150px md-top-minus-110px background-no-repeat background-size-100 h-300px w-100 d-none d-md-inline-block"
-      style="background-image: url('https://placehold.co/1190x262')" data-bottom-top="transform: translateY(-50px)"
-      data-top-bottom="transform: translateY(50px)"></div>
+      style="background-image: url('<?php echo get_theme_file_uri('assets/images/send-banner-bg.png') ?>')"
+      data-bottom-top="transform: translateY(-50px)" data-top-bottom="transform: translateY(50px)"></div>
     <div class="row align-items-center justify-content-center position-relative">
       <div class="col-xxl-5 col-xl-6 col-lg-7 text-center text-lg-end md-mb-30px">
         <h2 class="fw-500 alt-font text-white text-uppercase ls-minus-2px mb-0">Free chapter of book</h2>
@@ -602,109 +374,142 @@ get_header();
     </div>
   </div>
 </section>
+<!-- end section -->
 <!-- start section -->
-<section id="pricing" class="bg-gradient-very-light-gray">
+<section id="blog"
+  class="bg-white-transparent border-bottom border-1 border-color-extra-medium-gray position-relative overflow-hidden accordion-bodybackground-position-center-top">
   <div class="container">
-    <div class="row align-items-center mb-8">
-      <div class="col-lg-5 md-mb-50px text-center text-lg-start"
-        data-anime='{ "el": "childs", "translateX": [-50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-        <h2 class="fw-500 alt-font text-dark-gray text-uppercase mb-25px ls-minus-2px w-80 lg-w-100">Simple and flexible
-          pricing</h2>
-        <p class="w-80 lg-w-100">Lorem ipsum dolor consectetur adipiscing do text eiusmod tempor incididunt labore.</p>
-        <a href="#chapter"
-          class="btn btn-dark-gray btn-large left-icon btn-box-shadow btn-switch-text btn-round-edge me-25px section-link">
-          <span>
-            <span><i class="feather icon-feather-file-text text-base-color icon-small"></i></span>
-            <span class="btn-double-text fw-400" data-text="Chapters inside">Browse chapter</span>
-          </span>
-        </a>
-      </div>
-      <div class="col-xl-6 offset-xl-1 col-lg-7">
-        <div class="row row-cols-1 row-cols-sm-2 justify-content-center"
-          data-anime='{ "el": "childs", "translateY": [30, 0], "perspective": [1200,1200], "scale": [1.05, 1], "rotateY": [-30, 0], "opacity": [0,1], "duration": 800, "delay": 100, "staggervalue": 200, "easing": "easeOutQuad" }'>
-          <div class="col xs-mb-30px">
-            <div
-              class="bg-white h-100 box-shadow-quadruple-large box-shadow-quadruple-large-hover border-radius-6px p-45px xl-p-30px text-center position-relative">
-              <div
-                class="fs-11 fw-500 text-uppercase bg-red position-absolute right-20px top-20px text-white ps-10px pe-10px border-radius-2px lh-22 alt-font">
-                Hot</div>
-              <h2 class="text-dark-gray ls-minus-2px fw-700 d-block mb-5px">$29</h2>
-              <div
-                class="bg-selago d-inline-block mb-20px fw-500 text-uppercase border-radius-30px ps-20px pe-20px fs-13 w-120px text-cornflower-blue lh-30">
-                Kindle</div>
-              <p class="lh-28 w-80 mx-auto">eBook version + Audio of the book</p>
-              <a href="#" class="btn btn-cornflower-blue btn-medium btn-box-shadow btn-round-edge fw-400">Buy from
-                Amazon</a>
-            </div>
-          </div>
-          <div class="col">
-            <div
-              class="bg-white h-100 box-shadow-quadruple-large box-shadow-quadruple-large-hover border-radius-6px p-45px xl-p-30px text-center position-relative">
-              <h2 class="text-dark-gray ls-minus-2px fw-700 d-block mb-5px">$49</h2>
-              <div
-                class="bg-white-ice d-inline-block mb-20px fw-500 text-uppercase border-radius-30px ps-20px pe-20px fs-13 w-120px text-jade lh-30">
-                Hardcover</div>
-              <p class="lh-28 w-80 mx-auto">Hardcover version + Audio of the book</p>
-              <a href="#" class="btn btn-jade btn-medium btn-box-shadow btn-round-edge fw-400">Buy from Amazon</a>
-            </div>
-          </div>
-        </div>
+    <div class="row mb-3 text-center">
+      <div class="col"
+        data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+        <span class="fs-16 text-uppercase text-base-color fw-600 mb-5px d-block">Browse the latest</span>
+        <h3 class="fw-700 mb-0 text-dark-gray ls-minus-1px">Latest articles</h3>
       </div>
     </div>
-    <div class="row mb-10px">
-      <div class="col text-center"
-        data-anime='{ "translateX": [0, 0], "opacity": [0,1], "duration": 600, "delay": 300, "staggervalue": 300, "easing": "easeOutQuad" }'>
-        <span class="text-dark-gray text-uppercase text-decoration-line-bottom fs-15 fw-500">Our authentic partner
-          online stores!</span>
+    <div class="row">
+      <div class="col-12">
+        <ul
+          class="blog-grid blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large"
+          data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+          <li class="grid-sizer"></li>
+          <!-- start blog item -->
+          <li class="grid-item">
+            <div class="card border-0 border-radius-5px box-shadow-quadruple-large box-shadow-quadruple-large-hover">
+              <div class="blog-image">
+                <a href="demo-green-energy-blog-single-simple.html" class="d-block"><img
+                    src="https://placehold.co/600x430" alt="" /></a>
+                <div class="blog-categories">
+                  <a href="demo-green-energy-blog.html"
+                    class="categories-btn bg-white text-dark-gray text-dark-gray-hover text-uppercase fw-700">Technology</a>
+                </div>
+              </div>
+              <div class="card-body p-12 lg-p-10">
+                <a href="demo-green-energy-blog-single-simple.html"
+                  class="card-title mb-15px fw-600 fs-20 text-dark-gray d-inline-block">Exploring the evolution of
+                  electric charging technology.</a>
+                <p>Lorem ipsum dolor consectetur adipiscing eiusmod tempor...</p>
+                <div
+                  class="author d-flex justify-content-center align-items-center position-relative overflow-hidden fs-14 text-uppercase">
+                  <div class="me-auto">
+                    <span class="blog-date d-inline-block fw-600 text-dark-gray">30 August 2024</span>
+                    <div class="d-inline-block author-name fw-600 text-dark-gray">By <a
+                        href="demo-green-energy-blog.html" class="text-dark-gray text-decoration-line-bottom">Den
+                        viliamson</a></div>
+                  </div>
+                  <!-- <div class="like-count">
+                    <a href="#"><i class="fa-regular fa-heart text-red"></i><span
+                        class="text-dark-gray align-middle fw-600">25</span></a>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- end blog item -->
+          <!-- start blog item -->
+          <li class="grid-item">
+            <div class="card border-0 border-radius-5px box-shadow-quadruple-large box-shadow-quadruple-large-hover">
+              <div class="blog-image">
+                <a href="demo-green-energy-blog-single-simple.html" class="d-block"><img
+                    src="https://placehold.co/600x430" alt="" /></a>
+                <div class="blog-categories">
+                  <a href="demo-green-energy-blog.html"
+                    class="categories-btn bg-white text-dark-gray text-dark-gray-hover text-uppercase fw-700">Power</a>
+                </div>
+              </div>
+              <div class="card-body p-12 lg-p-10">
+                <a href="demo-green-energy-blog-single-simple.html"
+                  class="card-title mb-15px fw-600 fs-20 text-dark-gray d-inline-block">Renewable energy sources for a
+                  brighter tomorrow.</a>
+                <p>Lorem ipsum dolor consectetur adipiscing eiusmod tempor...</p>
+                <div
+                  class="author d-flex justify-content-center align-items-center position-relative overflow-hidden fs-14 text-uppercase">
+                  <div class="me-auto">
+                    <span class="blog-date d-inline-block fw-600 text-dark-gray">28 August 2024</span>
+                    <div class="d-inline-block author-name fw-600 text-dark-gray">By <a
+                        href="demo-green-energy-blog.html" class="text-dark-gray text-decoration-line-bottom">Hugh
+                        macleod</a></div>
+                  </div>
+                  <!-- <div class="like-count">
+                    <a href="#"><i class="fa-regular fa-heart text-red"></i><span
+                        class="text-dark-gray align-middle fw-600">58</span></a>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- end blog item -->
+          <!-- start blog item -->
+          <li class="grid-item">
+            <div class="card border-0 border-radius-5px box-shadow-quadruple-large box-shadow-quadruple-large-hover">
+              <div class="blog-image">
+                <a href="demo-green-energy-blog-single-simple.html" class="d-block"><img
+                    src="https://placehold.co/600x430" alt="" /></a>
+                <div class="blog-categories">
+                  <a href="demo-green-energy-blog.html"
+                    class="categories-btn bg-white text-dark-gray text-dark-gray-hover text-uppercase fw-700">Solar</a>
+                </div>
+              </div>
+              <div class="card-body p-12 lg-p-10">
+                <a href="demo-green-energy-blog-single-simple.html"
+                  class="card-title mb-15px fw-600 fs-20 text-dark-gray d-inline-block">Exploring green energy solutions
+                  for a cleaner future.</a>
+                <p>Lorem ipsum dolor consectetur adipiscing eiusmod tempor...</p>
+                <div
+                  class="author d-flex justify-content-center align-items-center position-relative overflow-hidden fs-14 text-uppercase">
+                  <div class="me-auto">
+                    <span class="blog-date d-inline-block fw-600 text-dark-gray">26 August 2024</span>
+                    <div class="d-inline-block author-name fw-600 text-dark-gray">By <a
+                        href="demo-green-energy-blog.html" class="text-dark-gray text-decoration-line-bottom">Walton
+                        smith</a></div>
+                  </div>
+                  <!-- <div class="like-count">
+                    <a href="#"><i class="fa-regular fa-heart text-red"></i><span
+                        class="text-dark-gray align-middle fw-600">75</span></a>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- end blog item -->
+        </ul>
       </div>
-    </div>
-    <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 text-center justify-content-center clients-style-05"
-      data-anime='{ "el": "childs", "translateX": [-50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-      <!-- start client item -->
-      <div class="col">
-        <div class="client-box">
-          <a href="#"><img src="https://placehold.co/225x110" alt=""></a>
-        </div>
-      </div>
-      <!-- end client item -->
-      <!-- start client item -->
-      <div class="col">
-        <div class="client-box">
-          <a href="#"><img src="https://placehold.co/225x110" alt=""></a>
-        </div>
-      </div>
-      <!-- end client item -->
-      <!-- start client item -->
-      <div class="col">
-        <div class="client-box">
-          <a href="#"><img src="https://placehold.co/225x110" alt=""></a>
-        </div>
-      </div>
-      <!-- end client item -->
-      <!-- start client item -->
-      <div class="col">
-        <div class="client-box">
-          <a href="#"><img src="https://placehold.co/225x110" alt=""></a>
-        </div>
-      </div>
-      <!-- end client item -->
     </div>
   </div>
 </section>
 <!-- end section -->
 <!-- start section -->
 <section id="contact" class="bg-very-light-gray background-position-right-top background-no-repeat"
-  style="background-image: url('https://placehold.co/551x369')">
+  style="background-image: url('<?php echo get_theme_file_uri('assets/images/map-indo-sketch.png') ?>')">
   <div class="container">
     <div class="row justify-content-center"
       data-anime='{"el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 300, "staggervalue": 300, "easing": "easeOutQuad" }'>
       <div class="col-lg-6 md-mb-50px contact-form-style-03">
         <div
           class="ps-16 pe-16 pt-13 pb-13 lg-p-10 border-radius-6px bg-white h-100 box-shadow-quadruple-large background-position-right-bottom background-no-repeat"
-          style="background-image: url('https://placehold.co/129x114')">
+          style="background-image: url('<?php echo get_theme_file_uri('assets/images/contact-bg.png') ?>')">
           <h3 class="fw-500 alt-font text-dark-gray text-uppercase ls-minus-2px">Get in touch now!</h3>
           <!-- start contact form -->
-          <form action="email-templates/contact-form.php" method="post">
+          <!-- <form action="email-templates/contact-form.php" method="post">
             <div class="position-relative form-group mb-15px">
               <span class="form-icon text-dark-gray"><i class="bi bi-person icon-extra-medium"></i></span>
               <input
@@ -729,7 +534,8 @@ get_header();
             </div>
             <span class="fs-14 lh-24 d-block w-80 lg-w-95">I understand that my data will be hold securely in accordance
               with the <a href="#" class="text-dark-gray text-decoration-line-bottom">privacy policy.</a></span>
-          </form>
+          </form> -->
+          <?php echo do_shortcode('[contact-form-7 id="fd93088" title="Contact"]') ?>
           <!-- end contact form -->
         </div>
       </div>
@@ -763,7 +569,7 @@ get_header();
                 <div class="feature-box-content">
                   <span>How can we help you?</span>
                   <span class="d-block fw-500 fs-18"><a href="mailto:help@yourdomain.com"
-                      class="text-dark-gray">help@yourdomain.com</a></span>
+                      class="text-dark-gray">help@mamaksibuk.com</a></span>
                 </div>
               </div>
             </div>

@@ -14,7 +14,7 @@
 
 get_header();
 ?>
-		<div class="content-area">
+		<div class="content-area top-space-margin half-section">
 			<main>
 				<div class="container">
 					<div class="row">
@@ -26,7 +26,7 @@ get_header();
 								while( have_posts() ): the_post();
 									?>
 										<article class="col">
-											<h1><?php the_title(); ?></h1>
+											<h1 class="alt-font text-dark-gray text-uppercase ls-minus-1px mb-25px"><?php the_title(); ?></h1>
 											<div><?php the_content(); ?></div>
 										</article>
 									<?php

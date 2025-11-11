@@ -4,11 +4,8 @@
     <div class="row flex-lg-row flex-column align-items-center">
       <!-- start footer column -->
       <div class="col-auto text-center text-lg-start md-mb-20px">
-        <a href="<?php echo esc_url(site_url('/')) ?>" class="footer-logo d-inline-block"><img src="<?php echo get_theme_file_uri('assets/images/demo-ebook-logo-black.png') ?>"
-            data-at2x="<?php echo get_theme_file_uri('assets/images/demo-ebook-logo-black@2x.png') ?>" alt=""></a>
-        <div
-          class="bg-white-ice d-inline-block align-middle fw-500 border-radius-30px ps-20px pe-20px fs-12 text-jade lh-30 ms-10px">
-          Best seller!</div>
+        <a href="<?php echo esc_url(site_url('/')) ?>" class="footer-logo d-inline-block"><img src="<?php echo get_theme_file_uri('assets/images/mamak-sibuk-logo2-bl.png') ?>"
+            data-at2x="<?php echo get_theme_file_uri('assets/images/mamak-sibuk-logo2-bl@2x.png') ?>" alt=""></a>
       </div>
       <!-- end footer column -->
       <!-- start footer column -->
@@ -16,9 +13,9 @@
         <ul class="footer-navbar fw-500 lh-normal">
           <li class="nav-item active"><a href="<?php echo esc_url(site_url('/')) ?>" class="inner-link nav-link">Home</a></li>
           <li class="nav-item"><a href="#about" class="inner-link nav-link">About</a></li>
-          <li class="nav-item"><a href="<?php echo esc_url(site_url('shop')) ?>" class="inner-link nav-link">Shop</a></li>
           <li class="nav-item"><a href="#author" class="inner-link nav-link">Blog</a></li>
           <li class="nav-item"><a href="#contact" class="inner-link nav-link">Contact</a></li>
+          <li class="nav-item"><a href="<?php echo esc_url(site_url('shop')) ?>" class="inner-link nav-link">Shop</a></li>
         </ul>
       </div>
       <!-- end footer column -->
