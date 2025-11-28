@@ -84,7 +84,7 @@ if (!function_exists('wp_body_open')) {
           <?php if(!is_checkout() && !is_cart()) { ?>
           <div class="header-icon">
             <div class="header-button">
-              <a href="#"
+              <a href="#" onclick="return false"
                 class="btn btn-transparent-white border-1 border-color-transparent-white-very-light btn-small btn-switch-text btn-round-edge section-link">
                 <!-- <span>
                   <span class="btn-double-text fw-400" data-text="Purchase now!">Purchase now!</span>

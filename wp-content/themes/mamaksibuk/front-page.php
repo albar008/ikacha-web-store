@@ -16,17 +16,17 @@ get_header();
       <div class="col-md-5 md-mb-70px sm-mb-40px sm-mt-50px position-relative text-white order-1 order-md-2"
         data-anime='{ "el": "childs", "opacity": [0, 1], "translateX": [100, 0], "staggervalue": 300, "easing": "easeOutQuad" }'>
         <h1 class="alt-font fw-400 fs-100 lg-fs-80 sm-fs-65 text-uppercase mb-35px sm-mb-25px ls-minus-2px">
-          <span>Sell the book</span>
-          <div class="highlight-separator" data-shadow-animation="true" data-animation-delay="500">fast<span><img
+          <span><?php echo get_theme_mod('set_hero_main_title', 'Sell the book') ?></span>
+          <div class="highlight-separator" data-shadow-animation="true" data-animation-delay="500"><?php echo get_theme_mod('set_hero_main_title_highlighted', 'fast') ?><span><img
                 src="<?php echo get_theme_file_uri('assets/images/highlight-separator-ebook.svg') ?>" alt=""></span>
           </div>
         </h1>
         <div class="newsletter-style-05 mb-30px w-90 md-w-100">
-          <button
+          <a href="#"
             class="btn btn-extra-large btn-round-edge btn-base-color btn-box-shadow btn-switch-text w-100 submit ls-0px"><span>
-              <span class="btn-double-text fw-400" data-text="Limited edition only!">Get Started now!</span>
+              <span class="btn-double-text fw-400" data-text="<?php echo get_theme_mod('set_btn_cta_text_hover', 'Limited edition only!') ?>"><?php echo get_theme_mod('set_btn_cta_text', 'Get Started now!') ?></span>
             </span>
-          </button>
+          </a>
         </div>
         <div class="feature-box feature-box-left-icon-middle">
           <div

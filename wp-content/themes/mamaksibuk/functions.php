@@ -223,6 +223,10 @@ add_filter('script_loader_src', 'remove_wp_version_and_add_timestamp_if_not_loca
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wp_generator');
 
+// customizer
+require_once get_template_directory(). '/inc/customizer.php';
+
 // Customize WooCommerce
 require_once get_template_directory() . '/inc/wc/archive-product-hooks.php';
 require_once get_template_directory() . '/inc/wc/single-product-hooks.php';
+require_once get_template_directory() . '/inc/wc/checkout-hooks.php';
