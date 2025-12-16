@@ -3559,31 +3559,6 @@
     }
 
     /* ===================================
-     Cookies set
-     ====================================== */
-    if (typeof $.cookie === 'function') {
-        if ($('body').find('#cookies-model').length > 0) {
-            setTimeout(function () {
-                var cookieModel = $('#cookies-model'),
-                        cookieConsentclosed = $.cookie('cookieConsent');
-
-                if (cookieConsentclosed == 'closed') {
-                    cookieModel.remove();
-                } else {
-                    cookieModel.show();
-                }
-
-                cookieModel.find('[data-accept-btn]').on('click', function (e) {
-                    e.preventDefault();
-                    var expiresDays = 1;
-                    cookieModel.remove();
-                    $.cookie('cookieConsent', 'closed', {expires: expiresDays, path: '/'});
-                });
-            }, 1000);
-        }
-    }
-
-    /* ===================================
      Back to top scroll
      ====================================== */
     $(document).on('click', '.scroll-top', function () {

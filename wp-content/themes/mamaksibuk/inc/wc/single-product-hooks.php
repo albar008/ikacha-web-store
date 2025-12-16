@@ -89,7 +89,7 @@ function single_product_hooks_customizations()
 
   add_action('woocommerce_review_before', 'woocommerce_review_display_meta', 11);
 
-  
+
   add_action('woocommerce_review_before_comment_meta', 'mamak_wc_review_display_gravatar_wrapper_close', 9);
 
   function mamak_wc_review_display_gravatar_wrapper_close($comment)
@@ -104,7 +104,7 @@ function single_product_hooks_customizations()
   {
     ?>
     <div class="w-100 last-paragraph-no-margin sm-ps-0 position-relative text-center text-md-start">
-      <?php 
+      <?php
   }
 
   add_action('woocommerce_review_comment_text', 'woocommerce_review_display_rating', 9);
@@ -116,6 +116,26 @@ function single_product_hooks_customizations()
     </div>
     <?php
   }
+
+  function mamak_product_meta()
+  {
+    global $product;
+    $cats = wp_get_post_terms($product->get_id(), 'product_cat', ['fields' => 'names']);
+    if ($cats) {
+      $cats = array_map('strtolower', $cats);
+    }
+    if (in_array('webinar', $cats)) {
+      $ev_start_date = get_field('prod_ev_start_date', $product->get_id());
+      $ev_end_date = get_field('prod_ev_end_date', $product->get_id());
+      ?>
+      <?php if ($ev_start_date) { ?>
+        <?php get_template_part('template-parts/partials/content', 'ev-schedule', ['ev_start_date' => $ev_start_date, 'ev_end_date' => $ev_end_date]) ?>
+      <?php } ?>
+    <?php
+    }
+  }
+
+  add_action('woocommerce_single_product_summary', 'mamak_product_meta', 21);
 
 
   // FILTERS
@@ -131,7 +151,7 @@ function single_product_hooks_customizations()
 
   function custom_rating_html($html, $rating, $count)
   {
-    return '<span class="text-golden-yellow ls-minus-1px mb-5px sm-me-10px sm-mb-0 d-inline-block d-md-block">'.$html.'</span>';
+    return '<span class="text-golden-yellow ls-minus-1px mb-5px sm-me-10px sm-mb-0 d-inline-block d-md-block">' . $html . '</span>';
   }
 
 

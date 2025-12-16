@@ -1,0 +1,30 @@
+.hover-box {
+  &.dark-hover {
+    &:hover {
+
+      a,
+      span,
+      p,
+      .btn,
+      i,
+      u,
+      p {
+        color: var(--dark-gray) !important;
+        -webkit-text-stroke-color: var(--dark-gray);
+      }
+
+      @for $i from 1 through 6 {
+        h#{$i} {
+          @extend .btn;
+        }
+      }
+    }
+  }
+}
+
+.feature-box-grid-child{
+  position: relative;
+  &:hover{
+    background-color: var(--base-color);
+  }
+}

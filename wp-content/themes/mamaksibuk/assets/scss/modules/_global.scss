@@ -1,0 +1,101 @@
+// @media print {
+//   body {
+//     display: none !important;
+//   }
+
+//   html::before {
+//     content: "🔒 Printing is disabled for this page.";
+//     display: block;
+//     text-align: center;
+//     font-size: 24px;
+//     margin-top: 200px;
+//   }
+// }
+
+.bg-base-color-light {
+  background-color: var(--base-light-color);
+}
+
+.text-base-color-dark {
+  color: var(--base-dark-color);
+}
+
+.text-base-color-dark-hover:hover {
+  color: var(--base-dark2-color);
+}
+
+.icon-manager {
+  .feature-box:hover {
+    cursor: pointer;
+  }
+}
+
+.text-w-image {
+  &__image-wrapper {
+    width: 100%;
+    margin-right: 30px;
+
+    @media (min-width: 768px) {
+      width: 50%;
+      float: left;
+    }
+  }
+}
+
+.row-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  &--4{
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  @for $i from 1 through 5{
+    &.gap-#{$i}{
+      gap: #{$i*10}px;
+    }
+  }
+  @for $i from 1 through 5{
+    &.gap-half-#{$i}{
+      gap: #{$i*10-5}px;
+    }
+  }
+
+  .col-grid {
+    display: grid;
+    grid-row: span 1;
+    grid-template-rows: max-content max-content;
+    grid-template-rows: subgrid;
+  }
+}
+
+.mfp-bg {
+  background-color: var(--dark-slate-blue);
+}
+
+.upcoming-ev-price {
+  font-size: 1.2rem;
+
+  &::before {
+    content: 'INVESTASI: ';
+    display: block;
+    font-style: italic;
+    font-weight: 500;
+  }
+}
+
+.ev-schedule {
+  display: table;
+
+  >.ev-date,
+  >.ev-time {
+    display: table-row;
+
+    >span {
+      &:first-child{
+        font-weight: 500;
+      }
+      display: table-cell;
+      padding-right: 10px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@use 'variables';
+
+.dropcap {
+  float: left;
+  font-size: 5rem;
+  line-height: 5rem;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  margin-right: 1rem;
+  color: var(--dark-gray);
+}
+
+.block-editor-block-list__layout {
+  .dropcap {
+    font-size: 3rem;
+    line-height: 3rem;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+}

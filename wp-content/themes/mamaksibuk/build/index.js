@@ -3546,32 +3546,6 @@ __webpack_require__.r(__webpack_exports__);
   }
 
   /* ===================================
-   Cookies set
-   ====================================== */
-  if (typeof $.cookie === 'function') {
-    if ($('body').find('#cookies-model').length > 0) {
-      setTimeout(function () {
-        var cookieModel = $('#cookies-model'),
-          cookieConsentclosed = $.cookie('cookieConsent');
-        if (cookieConsentclosed == 'closed') {
-          cookieModel.remove();
-        } else {
-          cookieModel.show();
-        }
-        cookieModel.find('[data-accept-btn]').on('click', function (e) {
-          e.preventDefault();
-          var expiresDays = 1;
-          cookieModel.remove();
-          $.cookie('cookieConsent', 'closed', {
-            expires: expiresDays,
-            path: '/'
-          });
-        });
-      }, 1000);
-    }
-  }
-
-  /* ===================================
    Back to top scroll
    ====================================== */
   $(document).on('click', '.scroll-top', function () {
@@ -3994,10 +3968,23 @@ function initMap() {
 
 /***/ }),
 
-/***/ "./assets/scss/wc-modif.scss":
-/*!***********************************!*\
-  !*** ./assets/scss/wc-modif.scss ***!
-  \***********************************/
+/***/ "./assets/scss/main.scss":
+/*!*******************************!*\
+  !*** ./assets/scss/main.scss ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./assets/scss/rich-text-formats.scss":
+/*!********************************************!*\
+  !*** ./assets/scss/rich-text-formats.scss ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4020,9 +4007,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 class AddToCartBtn {
   constructor() {
-    this.init();
+    this._init();
   }
-  init() {
+  _init() {
     $('.product .summary button[name="add-to-cart"]').addClass("btn btn-cart btn-extra-large btn-switch-text btn-box-shadow btn-none-transform btn-dark-gray left-icon btn-round-edge border-0 me-15px xs-me-0").html('<span>\
             <span><i class="feather icon-feather-shopping-bag"></i></span>\
             <span class="btn-double-text ls-0px" data-text="Add to cart">Add to cart</span> \
@@ -4030,6 +4017,46 @@ class AddToCartBtn {
   }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddToCartBtn);
+
+/***/ }),
+
+/***/ "./src/icon-manager.js":
+/*!*****************************!*\
+  !*** ./src/icon-manager.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+class IconManager {
+  constructor() {
+    this.feature_box_el = document.querySelectorAll(".icon-manager .feature-box");
+    this._init();
+  }
+  _init() {
+    this.feature_box_el.forEach(box => {
+      box.addEventListener("click", ev => {
+        let feature_box = ev.target;
+        while (!feature_box.classList.contains("feature-box")) {
+          feature_box = feature_box.parentElement;
+        }
+        let span = feature_box.querySelector(".feature-box-content span");
+        if (!span) return;
+
+        // Highlight text tanpa copy
+        const selection = window.getSelection();
+        const range = document.createRange();
+        selection.removeAllRanges();
+        range.selectNodeContents(span);
+        selection.addRange(range);
+      }, false);
+    });
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IconManager);
 
 /***/ }),
 
@@ -4044,11 +4071,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/css/style.css */ "./assets/css/style.css");
 /* harmony import */ var _assets_css_responsive_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/css/responsive.css */ "./assets/css/responsive.css");
 /* harmony import */ var _assets_css_template_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/css/template.css */ "./assets/css/template.css");
-/* harmony import */ var _assets_scss_wc_modif_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/scss/wc-modif.scss */ "./assets/scss/wc-modif.scss");
-/* harmony import */ var _assets_js_main__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/js/main */ "./assets/js/main.js");
-/* harmony import */ var _assets_js_main__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_js_main__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _search_product__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./search-product */ "./src/search-product.js");
-/* harmony import */ var _add_cart_btn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./add-cart-btn */ "./src/add-cart-btn.js");
+/* harmony import */ var _assets_scss_rich_text_formats_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/scss/rich-text-formats.scss */ "./assets/scss/rich-text-formats.scss");
+/* harmony import */ var _assets_scss_main_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/scss/main.scss */ "./assets/scss/main.scss");
+/* harmony import */ var _assets_js_main__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../assets/js/main */ "./assets/js/main.js");
+/* harmony import */ var _assets_js_main__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_js_main__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _search_product__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./search-product */ "./src/search-product.js");
+/* harmony import */ var _add_cart_btn__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./add-cart-btn */ "./src/add-cart-btn.js");
+/* harmony import */ var _manage_cookie__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./manage-cookie */ "./src/manage-cookie.js");
+/* harmony import */ var _icon_manager__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./icon-manager */ "./src/icon-manager.js");
 
 
 
@@ -4056,8 +4086,57 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const searchProduct = new _search_product__WEBPACK_IMPORTED_MODULE_5__["default"]();
-const addToCartBtn = new _add_cart_btn__WEBPACK_IMPORTED_MODULE_6__["default"]();
+
+
+
+const searchProduct = new _search_product__WEBPACK_IMPORTED_MODULE_6__["default"]();
+const addToCartBtn = new _add_cart_btn__WEBPACK_IMPORTED_MODULE_7__["default"]();
+const manageCookie = new _manage_cookie__WEBPACK_IMPORTED_MODULE_8__["default"]();
+const iconManager = new _icon_manager__WEBPACK_IMPORTED_MODULE_9__["default"]();
+
+/***/ }),
+
+/***/ "./src/manage-cookie.js":
+/*!******************************!*\
+  !*** ./src/manage-cookie.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+class ManageCookie {
+  constructor() {
+    this._init();
+  }
+  _init() {
+    if (typeof $.cookie === "function") {
+      if ($("body").find("#cookies-model").length > 0) {
+        setTimeout(function () {
+          var cookieModel = $("#cookies-model"),
+            cookieConsentclosed = $.cookie("mamak_cookie_accepted");
+          if (cookieConsentclosed == "true") {
+            cookieModel.remove();
+          } else {
+            cookieModel.fadeIn();
+          }
+          cookieModel.find("[data-accept-btn]").on("click", function (e) {
+            e.preventDefault();
+            var expiresDays = 1;
+            cookieModel.remove();
+            $.cookie("mamak_cookie_accepted", "true", {
+              expires: expiresDays,
+              path: "/"
+            });
+          });
+        }, 1000);
+      }
+    }
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ManageCookie);
 
 /***/ }),
 

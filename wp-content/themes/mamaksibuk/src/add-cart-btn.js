@@ -1,9 +1,9 @@
 class AddToCartBtn {
   constructor() {
-    this.init();
+    this._init();
   }
 
-  init() {
+  _init() {
     $('.product .summary button[name="add-to-cart"]')
       .addClass(
         "btn btn-cart btn-extra-large btn-switch-text btn-box-shadow btn-none-transform btn-dark-gray left-icon btn-round-edge border-0 me-15px xs-me-0"

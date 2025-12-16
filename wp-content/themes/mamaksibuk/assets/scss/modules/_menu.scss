@@ -1,0 +1,30 @@
+@use 'animations';
+
+header {
+  .navbar {
+    position: relative;
+    background-color: var(--dark-slate-blue) !important;
+    box-shadow: 0 20px 15px 0 rgba(23, 23, 23, 0.05) !important;
+  }
+}
+
+.home {
+  header {
+    .navbar {
+      position: relative;
+      @media (min-width: 992px) {
+        position: fixed;
+      }
+    }
+  }
+}
+
+.sticky {
+  &.sticky-active {
+    .navbar {
+      animation-name: opacityMenu;
+      animation-duration: 1s;
+      position: fixed;
+    }
+  }
+}

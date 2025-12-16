@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "wp-scripts build src/index src/login/login",
-    "dev": "wp-scripts start src/index src/login/login",
+    "build": "wp-scripts build src/index src/login/login src/custom-formats/rich-text-custom-formats",
+    "dev": "wp-scripts start src/index src/login/login src/custom-formats/rich-text-custom-formats",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

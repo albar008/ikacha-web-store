@@ -1,11 +1,11 @@
 /*!*****************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/css/template.css ***!
   \*****************************************************************************************************************************************************************************/
-@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap);
 /*!*********************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/css/template.css (1) ***!
   \*********************************************************************************************************************************************************************************/
-@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap);
 /*!*******************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/css/responsive.css ***!
   \*******************************************************************************************************************************************************************************/
@@ -21685,352 +21685,483 @@
 /*!*********************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/css/template.css (2) ***!
   \*********************************************************************************************************************************************************************************/
-
-/* ===================================
-    Crafto - Ebook
-====================================== */
-/* font */
-/* variable */
-:root {     
-    --base-color: #FEC200;  
-    --alt-font: 'Oswald', sans-serif;
-    --primary-font: 'Roboto', sans-serif;
+/* custom cursor */
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor .circle-cursor-outer {
+    border: 1px solid transparent;
+  }
+  .custom-cursor .circle-cursor-inner {
+    width: 10px;
+    height: 10px;
+    background: var(--base-color);
+  }
 }
-body{
-    line-height: 30px;
+.mamak-bg-dark-yellow {
+  background-color: var(--base-color);
+}
+.mamak-text-dark-color {
+  color: var(--dark-gray);
+}
+/* reset */
+body {
+  font-size: 17px;
+  line-height: 32px;
+}
+a {
+  color: #868d98;
+}
+b,
+strong {
+  font-weight: 600;
+}
+::-webkit-input-placeholder {
+  color: #868d98 !important;
+  text-overflow: ellipsis;
+}
+::-moz-placeholder {
+  color: #868d98 !important;
+  text-overflow: ellipsis;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  color: #868d98 !important;
+  text-overflow: ellipsis;
+  opacity: 1;
+}
+/* bg color */
+.bg-gradient-emerald-blue-emerald-green {
+  background-image: linear-gradient(50deg, #ffd36e 0, #fec200 100%);
+}
+.bg-gradient-black-green {
+  background-image: linear-gradient(
+    to right top,
+    #1f2021,
+    #1b1d1c,
+    #1b1d1c,
+    #222523,
+    #333c37
+  );
+}
+/* text color */
+.text-gradient-emerald-blue-emerald-green {
+  background-image: linear-gradient(to right top, #ffd36e, #fec200);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* button gradient */
+.btn-gradient-emerald-blue-emerald-green {
+  background-image: linear-gradient(to right, #ffd36e, #fec200, #ffd36e);
+  background-size: 200% auto;
+  color: var(--white);
+}
+/* btn */
+.btn {
+  font-weight: 500;
+  text-transform: inherit;
+}
+.btn.btn-extra-large {
+  font-size: 22px;
+}
+.btn.btn-large {
+  font-size: 17px;
+}
+.btn.btn-medium {
+  font-size: 16px;
+}
+.btn.btn-small {
+  font-size: 15px;
+}
+.btn.btn-very-small {
+  font-size: 13px;
+}
+.btn.btn-large .btn-icon i {
+  top: 1px;
+}
+.btn.btn-link {
+  padding: 0 0 2px;
+}
+.btn.btn-link-gradient {
+  padding: 0 0 3px;
 }
 /* header */
 header .navbar-brand img {
-    max-height: 28px;
+  max-height: 30px;
 }
 .navbar .navbar-nav .nav-link {
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: .5px;
+  font-size: 17px;
+  letter-spacing: 0.5px;
+  padding: 10px 22px;
 }
-.sticky .header-transparent .header-button .btn {
-    background-color: var(--dark-gray) !important;
-    border-color: var(--dark-gray) !important;
-    color: var(--white); 
+.push-menu .close-menu {
+  right: 30px;
+  top: 30px;
 }
-.sticky .header-transparent .header-button .btn:hover {
-    background-color: var(--dark-gray);
-    color: var(--white);
-}
-/* text color */
-.text-mountain-gray {
-    color: #a19f9d;
-}
-/* btn */
-.btn.btn-switch-text.btn-extra-large > span {
-    padding: 22px 40px;
-}
-.btn.btn-switch-text.btn-large > span {
-    padding: 18px 36px;
-}
-.btn.btn-switch-text.btn-medium > span {
-    padding: 16px 30px;
-}
-.btn.btn-switch-text.btn-small > span {
-    padding: 12px 24px;
-}
-.btn.btn-switch-text.btn-very-small > span {
-    padding: 9px 18px;
-}
-/* newsletter */
-.newsletter-style-05 .btn.btn-switch-text.btn-extra-large > span {
-    padding:17px 40px;
-    font-size: 18px;
-    color: var(--dark-gray);
-}
-/* highlight separator*/
-.highlight-separator[data-shadow-animation] span img {
-    bottom: 5px;
+/* newsletter style  */
+.newsletter-style-02 input {
+  font-size: 14px;
 }
 /* footer */
-.footer-light p, .footer-light a {
-    color: var(--dark-gray);
-}
-footer.half-footer {
-    padding: 40px 0;
-}
-footer .footer-logo img {
-    max-height: 28px;
-}
-footer .nav-link {
-    padding-right: 0.85rem;
-    padding-left: 0.85rem;
-}
-footer .elements-social ul li:last-child {
-    margin-right: 0;
+footer ul li {
+  margin-bottom: 2px;
 }
 /* media query responsive */
-@media (min-width: 2100px) {
-    .outside-box-left-11 {
-        margin-left: -11vw;
-    }
-}
 @media (max-width: 1199px) {
-    .btn.btn-switch-text.btn-small > span {
-        padding: 10px 12px;
-    }
-    .navbar .navbar-nav .nav-link {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
+  .navbar .navbar-nav .nav-link {
+    padding: 10px 17px;
+  }
 }
-@media (max-width: 991px) {
-    .header-icon .header-button .btn {
-        color: var(--dark-gray);
-        border-color: var(--dark-gray) !important;
-    }
-    .btn.btn-switch-text.btn-small > span {
-        padding: 10px 16px;
-    }
+
+/*!***********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./assets/scss/rich-text-formats.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************/
+/* variables */
+:root {
+  --base-color: #fec200;
+  --base-light-color: #fcf4d4;
+  --base-dark-color: #614F14;
+  --base-dark2-color: #4F4216;
+  --alt-font: "Manrope", sans-serif;
+  --primary-font: "Rubik", sans-serif;
+  --dark-gray: #252840;
+  --medium-gray: #868d98;
 }
-@media (max-width: 767px) {
-    .newsletter-style-05 .btn.btn-switch-text.btn-extra-large > span {
-        padding: 15px 30px;
-    }
+.dropcap {
+  float: left;
+  font-size: 5rem;
+  line-height: 5rem;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  margin-right: 1rem;
+  color: var(--dark-gray);
 }
-@media (max-width: 575px) {
-    .btn.btn-switch-text.btn-small > span {
-        padding: 9px 13px;
-    }
+.block-editor-block-list__layout .dropcap {
+  font-size: 3rem;
+  line-height: 3rem;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
-@media screen and (max-width: 1199px) and (max-height: 700px) {
-    #home .outside-box-left-11 {
-        text-align: center;
-    }
-    #home .outside-box-left-11 img {
-        width: 85%;
-    } 
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./assets/scss/main.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/* 
+* Template Name: Mamaksibuk
+* Author: Albar
+*/
+/* variables */
+:root {
+  --base-color: #fec200;
+  --base-light-color: #fcf4d4;
+  --base-dark-color: #614F14;
+  --base-dark2-color: #4F4216;
+  --alt-font: "Manrope", sans-serif;
+  --primary-font: "Rubik", sans-serif;
+  --dark-gray: #252840;
+  --medium-gray: #868d98;
 }
-/*!**************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./assets/scss/wc-modif.scss ***!
-  \**************************************************************************************************************************************************************************************************************************************************/
+.bg-base-color-light {
+  background-color: var(--base-light-color);
+}
+.text-base-color-dark {
+  color: var(--base-dark-color);
+}
+.text-base-color-dark-hover:hover {
+  color: var(--base-dark2-color);
+}
+.icon-manager .feature-box:hover {
+  cursor: pointer;
+}
+.text-w-image__image-wrapper {
+  width: 100%;
+  margin-right: 30px;
+}
+@media (min-width: 768px) {
+  .text-w-image__image-wrapper {
+    width: 50%;
+    float: left;
+  }
+}
+.row-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.row-grid--4 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.row-grid.gap-1 {
+  gap: 10px;
+}
+.row-grid.gap-2 {
+  gap: 20px;
+}
+.row-grid.gap-3 {
+  gap: 30px;
+}
+.row-grid.gap-4 {
+  gap: 40px;
+}
+.row-grid.gap-5 {
+  gap: 50px;
+}
+.row-grid.gap-half-1 {
+  gap: 5px;
+}
+.row-grid.gap-half-2 {
+  gap: 15px;
+}
+.row-grid.gap-half-3 {
+  gap: 25px;
+}
+.row-grid.gap-half-4 {
+  gap: 35px;
+}
+.row-grid.gap-half-5 {
+  gap: 45px;
+}
+.row-grid .col-grid {
+  display: grid;
+  grid-row: span 1;
+  grid-template-rows: max-content max-content;
+  grid-template-rows: subgrid;
+}
+.mfp-bg {
+  background-color: var(--dark-slate-blue);
+}
+.upcoming-ev-price {
+  font-size: 1.2rem;
+}
+.upcoming-ev-price::before {
+  content: "INVESTASI: ";
+  display: block;
+  font-style: italic;
+  font-weight: 500;
+}
+.ev-schedule {
+  display: table;
+}
+.ev-schedule > .ev-date,
+.ev-schedule > .ev-time {
+  display: table-row;
+}
+.ev-schedule > .ev-date > span:first-child,
+.ev-schedule > .ev-time > span:first-child {
+  font-weight: 500;
+}
+.ev-schedule > .ev-date > span,
+.ev-schedule > .ev-time > span {
+  display: table-cell;
+  padding-right: 10px;
+}
+@keyframes opacityMenu {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 header .navbar {
   position: relative;
-  background-color: #333 !important;
+  background-color: var(--dark-slate-blue) !important;
+  box-shadow: 0 20px 15px 0 rgba(23, 23, 23, 0.05) !important;
 }
-
 .home header .navbar {
-  position: fixed;
+  position: relative;
 }
-
+@media (min-width: 992px) {
+  .home header .navbar {
+    position: fixed;
+  }
+}
 .sticky.sticky-active .navbar {
+  animation-name: opacityMenu;
+  animation-duration: 1s;
   position: fixed;
 }
-
 .shop-image .lable.sale {
   background-color: var(--golden-yellow);
 }
-
 .woocommerce-checkout h1 {
   font-size: 4rem;
   font-weight: bold;
 }
-
 .woocommerce-checkout .woocommerce-order-overview + p {
   margin-block-end: 0;
 }
-
 .woocommerce-checkout .woocommerce-order-details {
   padding-block: 10px;
 }
-
 .woocommerce-checkout .woocommerce-order-details__title {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 5px;
 }
-
 .woocommerce-checkout .woocommerce-bacs-bank-details {
   padding-block: 0px;
 }
-
 .woocommerce-checkout .woocommerce-bacs-bank-details .wc-bacs-bank-details-heading {
   font-size: 2rem;
   margin-block-end: 5px;
 }
-
 .woocommerce-checkout .woocommerce-bacs-bank-details .wc-bacs-bank-details-account-name {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 5px;
 }
-
 .woocommerce-checkout .woocommerce-customer-details {
   padding-block: 10px;
 }
-
 .woocommerce-checkout .woocommerce-customer-details .woocommerce-columns--addresses {
   padding-block: 0;
 }
-
 .woocommerce-checkout .woocommerce-customer-details .woocommerce-column--billing-address h2 {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 5px;
 }
-
 .woocommerce-checkout .woocommerce-customer-details .woocommerce-column--shipping-address h2 {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 5px;
 }
-
 .wc-block-mini-cart__title {
   font-family: var(--alt-font);
 }
-
+.wc-block-mini-cart__button .wc-block-mini-cart__quantity-badge {
+  color: var(--dark-slate-blue);
+}
+@media (min-width: 992px) {
+  .wc-block-mini-cart__button .wc-block-mini-cart__quantity-badge {
+    color: white;
+  }
+}
+.wc-block-mini-cart__button .wc-block-mini-cart__quantity-badge .wc-block-mini-cart__badge {
+  color: inherit;
+}
 .woocommerce .star-rating {
   float: none;
   display: inline-block;
 }
-
 #contact .cf7-cf-turnstile {
   margin-bottom: -40px !important;
 }
-
 #contact .cf-turnstile > div {
   text-align: center;
 }
-
 .woocommerce-variation-price .price {
   font-size: 2rem !important;
   font-family: var(--alt-font) !important;
   color: black !important;
 }
-
 .product .summary tr.woocommerce-grouped-product-list-item .woocommerce-grouped-product-list-item__quantity {
   width: 7em !important;
 }
-
 .product .summary button.single_add_to_cart_button {
   background-color: var(--dark-gray) !important;
   width: 100%;
   padding-block: 20px;
 }
-
 @media (min-width: 768px) {
   .product .summary button.single_add_to_cart_button {
     width: 50%;
     padding-block: inherit;
   }
 }
-
 .product .quantity input[type=number] {
   width: 100% !important;
   border-radius: 10px;
 }
-
 .product.product-type-simple form.cart {
   display: flex;
   gap: 10px;
   flex-direction: column;
 }
-
 @media (min-width: 768px) {
   .product.product-type-simple form.cart {
     flex-direction: row;
   }
 }
-
 .product.product-type-simple form.cart .button[name=add-to-cart] {
   flex: 1;
   float: none !important;
   background-color: var(--dark-gray) !important;
   margin: 0 !important;
 }
-
 @media (min-width: 768px) {
   .product.product-type-simple form.cart .button[name=add-to-cart] {
     flex: 2;
   }
 }
-
 .product.product-type-simple form.cart .quantity {
   display: block;
   float: none !important;
   flex: 1;
 }
-
 .product.product-type-variable table.variations {
   border-spacing: 0 10px;
   border-collapse: separate;
 }
-
 .product.product-type-variable .woocommerce-variation-add-to-cart.variations_button {
   display: flex;
   gap: 10px;
   flex-direction: column;
 }
-
 @media (min-width: 768px) {
   .product.product-type-variable .woocommerce-variation-add-to-cart.variations_button {
     flex-direction: row;
   }
 }
-
 .product.product-type-variable .woocommerce-variation-add-to-cart.variations_button .button.single_add_to_cart_button {
   flex: 1;
   float: none !important;
   margin: 0 !important;
 }
-
 @media (min-width: 768px) {
   .product.product-type-variable .woocommerce-variation-add-to-cart.variations_button .button.single_add_to_cart_button {
     flex: 2;
   }
 }
-
 .product.product-type-variable .woocommerce-variation-add-to-cart.variations_button .quantity {
   display: block;
   float: none !important;
   flex: 1;
 }
-
 .product.product-type-grouped form.cart .woocommerce-variation-add-to-cart {
   display: flex;
   gap: 10px;
 }
-
 @media (min-width: 768px) {
   .product.product-type-grouped form.cart .woocommerce-variation-add-to-cart {
     gap: 20px;
   }
 }
-
 .product.product-type-grouped form.cart button.single_add_to_cart_button {
   margin-top: 10px;
 }
-
 @media (min-width: 768px) {
   .product.product-type-grouped form.cart button.single_add_to_cart_button {
     padding-block: 20px;
   }
 }
-
+.product.product-type-external .button.single_add_to_cart_button {
+  padding-block: 20px;
+}
 .wp-block-woocommerce-mini-cart-checkout-button-block {
   background-color: var(--dark-gray);
   color: white;
 }
-
 .wp-block-woocommerce-mini-cart-checkout-button-block:hover {
   color: white;
   background-color: #4f4f4f;
 }
-
 .wp-block-woocommerce-proceed-to-checkout-block .wc-block-cart__submit-button {
   background-color: var(--dark-gray);
   color: white;
 }
-
 .sidebar-product-filters {
   margin-bottom: 1.5em;
 }
-
 @media (min-width: 768px) {
   .sidebar-product-filters {
     margin-bottom: 0;
@@ -22038,21 +22169,52 @@ header .navbar {
     top: 80px;
   }
 }
-
-div[data-block-name="woocommerce/checkout"] input[type=checkbox], div[data-block-name="woocommerce/checkout"] input[type=radio] {
+div[data-block-name="woocommerce/checkout"] input[type=checkbox],
+div[data-block-name="woocommerce/checkout"] input[type=radio] {
   padding: 0;
 }
-
 div[data-block-name="woocommerce/checkout"] .wc-block-components-checkout-order-summary__content .wp-block-woocommerce-checkout-order-summary-cart-items-block .wc-block-components-order-summary-item__image {
   flex: 1;
 }
-
 div[data-block-name="woocommerce/checkout"] .wc-block-components-checkout-order-summary__content .wp-block-woocommerce-checkout-order-summary-cart-items-block .wc-block-components-order-summary-item__description {
   flex: 4;
 }
-
 div[data-block-name="woocommerce/checkout"] .wc-block-components-checkout-order-summary__content .wp-block-woocommerce-checkout-order-summary-cart-items-block .wc-block-components-order-summary-item__total-price {
   flex: 1;
+}
+.single-product .woocommerce-product-details__short-description ul li, .single-product #tab-description ul li {
+  list-style-type: initial;
+}
+.hover-box.dark-hover:hover a,
+.hover-box.dark-hover:hover span,
+.hover-box.dark-hover:hover p,
+.hover-box.dark-hover:hover .btn,
+.hover-box.dark-hover:hover h6,
+.hover-box.dark-hover:hover h5,
+.hover-box.dark-hover:hover h4,
+.hover-box.dark-hover:hover h3,
+.hover-box.dark-hover:hover h2,
+.hover-box.dark-hover:hover h1,
+.hover-box.dark-hover:hover i,
+.hover-box.dark-hover:hover u,
+.hover-box.dark-hover:hover p {
+  color: var(--dark-gray) !important;
+  -webkit-text-stroke-color: var(--dark-gray);
+}
+.feature-box-grid-child {
+  position: relative;
+}
+.feature-box-grid-child:hover {
+  background-color: var(--base-color);
+}
+.countdown-style-brand .countdown .counter-container .countdown-box {
+  background-color: transparent !important;
+  padding: 0 !important;
+  box-shadow: none;
+}
+.countdown-style-brand .countdown .counter-container .countdown-box .number {
+  font-size: 2rem;
+  color: var(--dark-slate-blue);
 }
 
 /*# sourceMappingURL=index.css.map*/

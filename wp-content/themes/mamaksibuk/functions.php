@@ -4,57 +4,43 @@ if (!defined('ABSPATH')) {
   die;
 }
 
-add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
+define('STRICT_ROLES', ['web_manager', 'shop_manager']);
+define('STRICT_PAGES', ['home', 'about']);
 
-function theme_enqueue_styles()
+/**
+ * Get information about available image sizes
+ */
+function get_image_sizes($size = '')
 {
-  // wp_deregister_script('jquery');
-  wp_register_style('icon-style', get_theme_file_uri('assets/css/icon.min.css'));
-  wp_register_style('vendors-style', get_theme_file_uri('assets/css/vendors.min.css'));
-  wp_register_style('pre-style', get_theme_file_uri('build/style-index.css'));
-  wp_enqueue_style('main-style', get_theme_file_uri('build/index.css'), ['vendors-style', 'icon-style', 'pre-style']);
+  $wp_additional_image_sizes = wp_get_additional_image_sizes();
 
-  // wp_register_script('jq', get_theme_file_uri('assets/js/jquery.js'), [], null, true);
-  wp_register_script('pre-script', get_theme_file_uri('assets/js/vendors.min.js'), ['jquery'], null, true);
-  wp_register_script('main-script', get_theme_file_uri('build/index.js'), ['jquery', 'pre-script'], null, true);
+  $sizes = array();
+  $get_intermediate_image_sizes = get_intermediate_image_sizes();
 
-  wp_enqueue_script('pre-script');
+  // Create the full array with sizes and crop info
+  foreach ($get_intermediate_image_sizes as $_size) {
+    if (in_array($_size, array('thumbnail', 'medium', 'large'))) {
+      $sizes[$_size]['width'] = get_option($_size . '_size_w');
+      $sizes[$_size]['height'] = get_option($_size . '_size_h');
+      $sizes[$_size]['crop'] = (bool) get_option($_size . '_crop');
+    } elseif (isset($wp_additional_image_sizes[$_size])) {
+      $sizes[$_size] = array(
+        'width' => $wp_additional_image_sizes[$_size]['width'],
+        'height' => $wp_additional_image_sizes[$_size]['height'],
+        'crop' => $wp_additional_image_sizes[$_size]['crop']
+      );
+    }
+  }
 
-  // Tambahkan inline script untuk set alias $
-  wp_add_inline_script('pre-script', 'var $ = jQuery.noConflict();', 'before');
-
-  wp_localize_script('main-script', 'siteLocalData', [
-    'root_url' => get_site_url(),
-    'nonce' => wp_create_nonce('wp_rest'),
-    'is_admin_bar_show' => is_admin_bar_showing(),
-  ]);
-
-  wp_enqueue_script('main-script');
-
-
-}
-
-add_action('after_setup_theme', 'mamak_config');
-
-function mamak_config()
-{
-  add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script' ) );
-  add_theme_support('widgets');
-  add_theme_support('woocommerce', array(
-    'thumbnail_image_width' => 150,
-    'single_image_width' => 300,
-
-    'product_grid' => array(
-      'default_rows' => 3,
-      'default_columns' => 4,
-      'min_columns' => 2,
-      'max_columns' => 5,
-    ),
-  ));
-
-  add_theme_support('wc-product-gallery-zoom');
-  add_theme_support('wc-product-gallery-lightbox');
-  add_theme_support('wc-product-gallery-slider');
+  // Get only 1 size if found
+  if ($size) {
+    if (isset($sizes[$size])) {
+      return $sizes[$size];
+    } else {
+      return false;
+    }
+  }
+  return $sizes;
 }
 
 if (!function_exists('woocommerce_breadcrumb')) {
@@ -105,6 +91,121 @@ if (!function_exists('woocommerce_breadcrumb')) {
   }
 }
 
+# Remove Editor support for specific page
+add_action('admin_init', function () {
+  global $pagenow;
+  $page_id = isset($_GET['post']) ? (int) $_GET['post'] : 0;
+  if ($page_id) {
+    $post = get_post($page_id);
+    if ($post) {
+      if ($post->post_type === 'page') {
+        remove_post_type_support('page', 'thumbnail');
+      }
+    }
+  }
+
+  if (
+        $pagenow === 'post-new.php' &&
+        isset($_GET['post_type']) &&
+        $_GET['post_type'] === 'page'
+    ) {
+        if ( ! current_user_can('administrator') ) {
+            wp_die('You do not have permission to create a new page.');
+        }
+    }
+});
+
+function perm($return, $id, $new_title, $new_slug)
+{
+
+  $post = get_post($id);
+
+  if (!$post || ($post->post_type !== 'page' && strtolower($post->post_name) !== 'about')) {
+    return $return;
+  }
+
+  return preg_replace(
+    '/<span id="edit-slug-buttons">.*<\/span>|<span id=\'view-post-btn\'>.*<\/span>/i',
+    '',
+    $return
+  );
+}
+add_filter('get_sample_permalink_html', 'perm', 10, 4);
+
+function mamak_block_editor_assets_regis()
+{
+  // wp_register_style('rich-text-custom-format-style', get_theme_file_uri('build/rich-text-custom-formats.css'));
+  wp_enqueue_script(
+    'rich-text-custom-format',
+    get_template_directory_uri() . '/build/rich-text-custom-formats.js',
+    array(),
+    false,
+    true
+  );
+}
+add_action('enqueue_block_editor_assets', 'mamak_block_editor_assets_regis');
+
+function theme_enqueue_styles()
+{
+  // wp_deregister_script('jquery');
+  wp_register_style('icon-style', get_theme_file_uri('assets/css/icon.min.css'));
+  wp_register_style('vendors-style', get_theme_file_uri('assets/css/vendors.min.css'));
+  wp_register_style('pre-style', get_theme_file_uri('build/style-index.css'));
+  wp_enqueue_style('main-style', get_theme_file_uri('build/index.css'), ['vendors-style', 'icon-style', 'pre-style']);
+
+  // wp_register_script('jq', get_theme_file_uri('assets/js/jquery.js'), [], null, true);
+  wp_register_script('pre-script', get_theme_file_uri('assets/js/vendors.min.js'), ['jquery'], null, true);
+  wp_register_script('main-script', get_theme_file_uri('build/index.js'), ['jquery', 'pre-script'], null, true);
+
+  wp_enqueue_script('pre-script');
+
+  // Tambahkan inline script untuk set alias $
+  wp_add_inline_script('pre-script', 'var $ = jQuery.noConflict();', 'before');
+
+  wp_localize_script('main-script', 'siteLocalData', [
+    'root_url' => get_site_url(),
+    'nonce' => wp_create_nonce('wp_rest'),
+    'is_admin_bar_show' => is_admin_bar_showing(),
+  ]);
+
+  wp_enqueue_script('main-script');
+}
+add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
+
+function mamak_config()
+{
+  add_theme_support('title-tag');
+  add_theme_support('html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script'));
+  add_theme_support('widgets');
+  add_theme_support('woocommerce', array(
+    'thumbnail_image_width' => 150,
+    'single_image_width' => 300,
+
+    'product_grid' => array(
+      'default_rows' => 3,
+      'default_columns' => 4,
+      'min_columns' => 2,
+      'max_columns' => 5,
+    ),
+  ));
+
+  add_theme_support('wc-product-gallery-zoom');
+  add_theme_support('wc-product-gallery-lightbox');
+  add_theme_support('wc-product-gallery-slider');
+  add_theme_support('editor-styles');
+  add_editor_style(['build/rich-text-custom-formats.css']);
+
+  add_image_size('mamak_slider_image', 1920, 1100, true);
+  add_image_size('mamak_blog_image', 600, 430, true);
+  add_image_size('mamak_about_image', 800, 770, true);
+  add_image_size('mamak_service_image', 755, 510, true);
+  add_image_size('mamak_core_value_image', 600, 750, true);
+  add_image_size('mamak_vis_mis1_image', 638, 638, true);
+  add_image_size('mamak_vis_mis2_image', 750, 800, true);
+  add_image_size('mamak_coach_image', 600, 759, true);
+}
+add_action('after_setup_theme', 'mamak_config');
+
 function mytheme_widgets_init()
 {
   register_sidebar(array(
@@ -117,9 +218,10 @@ function mytheme_widgets_init()
 add_action('widgets_init', 'mytheme_widgets_init');
 
 // LOGIN
-function ourLoginTitle( $headertext ) {
-	$headertext = esc_html__( 'Welcome to WordPress', 'plugin-textdomain' );
-	return $headertext;
+function ourLoginTitle($headertext)
+{
+  $headertext = esc_html__('Welcome to WordPress', 'plugin-textdomain');
+  return $headertext;
 }
 add_filter('login_headertext', 'ourLoginTitle');
 function ourHeaderUrl()
@@ -133,17 +235,17 @@ add_action('login_enqueue_scripts', function () {
   wp_enqueue_style('custom-login', get_theme_file_uri('/build/login.css'));
 });
 
-add_action('restrict_manage_posts', function() {
-    $screen = get_current_screen();
+add_action('restrict_manage_posts', function () {
+  $screen = get_current_screen();
 
-    // Pastikan hanya muncul di halaman Media Library
-    if ($screen->post_type !== 'attachment') {
-        return;
-    }
+  // Pastikan hanya muncul di halaman Media Library
+  if ($screen->post_type !== 'attachment') {
+    return;
+  }
 
-    // Ambil nilai unik dari custom field
-    global $wpdb;
-    $results = $wpdb->get_col("
+  // Ambil nilai unik dari custom field
+  global $wpdb;
+  $results = $wpdb->get_col("
         SELECT DISTINCT meta_value 
         FROM $wpdb->postmeta 
         WHERE meta_key = 'media_type' 
@@ -151,26 +253,25 @@ add_action('restrict_manage_posts', function() {
         ORDER BY meta_value ASC
     ");
 
-    $selected = isset($_GET['media_type']) ? $_GET['media_type'] : '';
-    echo '<select name="media_type">';
-    echo '<option value="">Semua Kategori Media</option>';
+  $selected = isset($_GET['media_type']) ? $_GET['media_type'] : '';
+  echo '<select name="media_type">';
+  echo '<option value="">Semua Kategori Media</option>';
 
-    foreach ($results as $value) {
-        printf(
-            '<option value="%s" %s>%s</option>',
-            esc_attr($value),
-            selected($selected, $value, false),
-            esc_html(ucfirst($value))
-        );
-    }
-
-    echo '</select>';
+  foreach ($results as $value) {
+    printf(
+      '<option value="%s" %s>%s</option>',
+      esc_attr($value),
+      selected($selected, $value, false),
+      esc_html(ucfirst($value))
+    );
+  }
+  echo '</select>';
 });
 
-
-function my_wp_disable_print_except_thankyou() {
-    if ( ! is_wc_endpoint_url( 'order-received' ) ) {
-        echo '<style media="print">
+function my_wp_disable_print_except_thankyou()
+{
+  if (!is_wc_endpoint_url('order-received')) {
+    echo '<style media="print">
             body {
                 display: none !important;
             }
@@ -182,26 +283,26 @@ function my_wp_disable_print_except_thankyou() {
               margin-top: 200px;
             }
         </style>';
-    }
+  }
 }
-add_action( 'wp_head', 'my_wp_disable_print_except_thankyou' );
+add_action('wp_head', 'my_wp_disable_print_except_thankyou');
 
 add_filter('rest_endpoints', function ($endpoints) {
-    // Batasi akses ke daftar user
-    if (isset($endpoints['/wp/v2/users'])) {
-        $endpoints['/wp/v2/users'][0]['permission_callback'] = function () {
-            return is_user_logged_in() && current_user_can('manage_options'); // hanya user login
-        };
-    }
+  // Batasi akses ke daftar user
+  if (isset($endpoints['/wp/v2/users'])) {
+    $endpoints['/wp/v2/users'][0]['permission_callback'] = function () {
+      return is_user_logged_in() && current_user_can('manage_options'); // hanya user login
+    };
+  }
 
-    // Batasi akses ke user berdasarkan ID
-    if (isset($endpoints['/wp/v2/users/(?P<id>[\d]+)'])) {
-        $endpoints['/wp/v2/users/(?P<id>[\d]+)'][0]['permission_callback'] = function () {
-            return is_user_logged_in() && current_user_can('manage_options'); // hanya user login
-        };
-    }
+  // Batasi akses ke user berdasarkan ID
+  if (isset($endpoints['/wp/v2/users/(?P<id>[\d]+)'])) {
+    $endpoints['/wp/v2/users/(?P<id>[\d]+)'][0]['permission_callback'] = function () {
+      return is_user_logged_in() && current_user_can('manage_options'); // hanya user login
+    };
+  }
 
-    return $endpoints;
+  return $endpoints;
 });
 
 function remove_wp_version_and_add_timestamp_if_not_local_assets($src)
@@ -219,12 +320,214 @@ function remove_wp_version_and_add_timestamp_if_not_local_assets($src)
 add_filter('style_loader_src', 'remove_wp_version_and_add_timestamp_if_not_local_assets', 9999);
 add_filter('script_loader_src', 'remove_wp_version_and_add_timestamp_if_not_local_assets', 9999);
 
+add_filter('use_block_editor_for_post', function ($can_edit, $post) {
+  // ID page yang ingin dinonaktifkan block editor-nya
+  $disable_pages = array('about'); // masukkan ID Page
+
+  // if (in_array(strtolower($post->post_name), $disable_pages)) {
+  //   return false; // disable Gutenberg
+  // }
+
+  return $can_edit;
+}, 10, 2);
+
+add_filter('allowed_block_types_all', 'prevent_blocks', 10, 2);
+function prevent_blocks($allowed_blocks, $editor_context)
+{
+  $disable_pages = array('about'); // masukkan ID Page
+
+  if ($editor_context->post && in_array(strtolower($editor_context->post->post_name), $disable_pages)) {
+    return [
+      'core/paragraph',
+      'core/heading',
+      'core/list',
+      'core/math',
+      'core/post-time-to-read',
+      'core/quote',
+      'core/embed',
+      'core/table',
+      'core/columns'
+    ];
+  }
+
+  return $allowed_blocks;
+
+}
+
+// Remove "More Tag" button from Classic Editor
+function disable_more_tag_in_classic_editor($buttons)
+{
+  $remove = array('wp_more'); // tombol More Tag
+  return array_diff($buttons, $remove);
+}
+add_filter('mce_buttons', 'disable_more_tag_in_classic_editor');
+
+function mamak_limit_edit_page($allcaps, $caps, $args, $user)
+{
+  if (!is_admin()) {
+    return $allcaps;
+  }
+  if (
+    empty(array_intersect(STRICT_ROLES, $user->roles))
+  ) {
+    return $allcaps;
+  }
+  $post_id = false;
+  if (isset($_GET['post'])) {
+    $post_id = intval($_GET['post']);
+  }
+  if ($post_id) {
+    $post = get_post($post_id);
+    if (
+      (
+        in_array($post->post_name, STRICT_PAGES)
+      ) &&
+      $post->post_type === 'page'
+    ) {
+      if (isset($caps[0])) {
+        $allcaps[$caps[0]] = true;
+      }
+    } else {
+      if ($post->post_type === 'page') {
+        $allcaps[$caps[0]] = false;
+        wp_die('You do not have permission to access this page.');
+      }
+    }
+  }
+  return $allcaps;
+}
+add_filter('user_has_cap', 'mamak_limit_edit_page', 10, 4);
+
+function mamak_custom_row_actions($actions, $post)
+{
+  // var_dump("ARAEADA", $actions, $post);
+  $user = wp_get_current_user();
+  if (!is_admin()) {
+    return $actions;
+  }
+  if (
+    empty(array_intersect(STRICT_ROLES, $user->roles))
+  ) {
+    return $actions;
+  } else {
+    if ($post->post_type === 'page') {
+      #Disable Duplicate for page except admin
+      unset($actions['duplicate']);
+    }
+  }
+  if (!in_array($post->post_name, STRICT_PAGES)) {
+    unset($actions['edit']);
+    unset($actions['inline hide-if-no-js']);
+  }
+  return $actions;
+}
+add_filter('page_row_actions', 'mamak_custom_row_actions', 10, 2);
+
+add_action('admin_footer', 'my_admin_add_js', 100);
+function my_admin_add_js($data)
+{
+  $dataTest = isset($_GET['post']) ? (int) $_GET['post'] : 0;
+  ?>
+  <!-- <style>
+    .editor-post-url__panel-dropdown {
+      display: none !important;
+    }
+  </style> -->
+  <?php
+}
+
+//Removing &amp; or any html special enitiy from name
+function filter_post_name($data, $postarr, $unsanitized_postarr)
+{
+  $user = wp_get_current_user();
+  $post = get_post($postarr['ID']);
+  if ($post && $post->post_type === 'page' && !in_array('administrator', (array) $user->roles)) {
+    $data['post_name'] = $post->post_name;
+  }
+  return $data;
+}
+add_filter('wp_insert_post_data', 'filter_post_name', 10, 3);
+
+add_action('admin_menu', function () {
+  remove_submenu_page('themes.php', 'nav-menus.php');
+});
+function hide_admin_role_for_non_admins($roles)
+{
+
+  if (!current_user_can('administrator')) {
+    if (isset($roles['administrator'])) {
+      unset($roles['administrator']);
+    }
+  }
+
+  return $roles;
+}
+add_filter('editable_roles', 'hide_admin_role_for_non_admins');
+
+function hide_admin_users_from_list($query)
+{
+  if (!is_admin() || 'users' !== get_current_screen()->id) {
+    return;
+  }
+
+  if (!current_user_can('administrator')) {
+
+    // Prevent WP from loading too much data
+    $query->set('role__not_in', array('Administrator'));
+  }
+}
+add_action('pre_get_users', 'hide_admin_users_from_list');
+
+add_filter('upload_mimes', function ($mimes) {
+  $mimes['pdf'] = 'application/pdf';
+  $mimes['ppt'] = 'application/vnd.ms-powerpoint';
+  $mimes['pptx'] = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+  return $mimes;
+});
+
+function change_title_placeholder($title)
+{
+  $screen = get_current_screen();
+
+  if ('coach' === $screen->post_type) {
+    return 'Add Coach Name';
+  }
+
+  if ('service' === $screen->post_type) {
+    return 'Add Service Name';
+  }
+
+  return $title;
+}
+add_filter('enter_title_here', 'change_title_placeholder');
+
+function my_callback_pre_get_posts($query)
+{
+  if (is_admin() && $query->is_main_query()) {
+    $currUser = wp_get_current_user();
+    global $pagenow;
+
+    if (
+      $pagenow === 'edit.php' &&
+      $query->get('post_type') === 'page'
+    ) {
+      // echo $query->get('post_type');
+      // $query->set( 'author', get_current_user_id() );
+      if (!empty(array_intersect(STRICT_ROLES, $currUser->roles))) {
+        $query->set('post_name__in', STRICT_PAGES);
+      }
+    }
+  }
+}
+add_action('pre_get_posts', 'my_callback_pre_get_posts');
+
+
 // Remove
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wp_generator');
 
 // customizer
-require_once get_template_directory(). '/inc/customizer.php';
+require_once get_template_directory() . '/inc/customizer/customizer.php';
 
 // Customize WooCommerce
 require_once get_template_directory() . '/inc/wc/archive-product-hooks.php';

@@ -1,0 +1,15 @@
+.countdown-style-brand{
+  .countdown{
+    .counter-container{
+      .countdown-box{
+        background-color: transparent !important;
+        padding: 0 !important;
+        box-shadow: none;
+        .number{
+          font-size: 2rem;
+          color: var(--dark-slate-blue);
+        }
+      }
+    }
+  }
+}
