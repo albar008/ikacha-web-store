@@ -12,12 +12,12 @@
       <!-- start footer column -->
       <div class="col text-center text-lg-end">
         <ul class="footer-navbar fw-500 lh-normal">
-          <li class="nav-item active"><a href="<?php echo esc_url(site_url('/')) ?>"
+          <li class="nav-item <?php if(is_front_page()) echo "active" ?>"><a href="<?php echo esc_url(site_url('/')) ?>"
               class="inner-link nav-link">Home</a></li>
-          <li class="nav-item"><a href="#about" class="inner-link nav-link">About</a></li>
-          <li class="nav-item"><a href="#author" class="inner-link nav-link">Blog</a></li>
-          <li class="nav-item"><a href="#contact" class="inner-link nav-link">Contact</a></li>
-          <li class="nav-item"><a href="<?php echo esc_url(site_url('shop')) ?>" class="inner-link nav-link">Shop</a>
+          <li class="nav-item <?php if(is_page('about')) echo "active" ?>"><a href="<?php echo esc_url(site_url('about')) ?>" class="inner-link nav-link">Who we are</a></li>
+          <li class="nav-item <?php if(is_shop() or is_product() or is_cart() or is_checkout()) echo "active" ?>"><a href="<?php echo esc_url(site_url('shop')) ?>" class="inner-link nav-link">Shop</a>
+          <li class="nav-item <?php if(get_post_type() === 'post') echo "active" ?>"><a href="<?php echo esc_url(site_url('blog')) ?>" class="inner-link nav-link">Blog</a></li>
+          <li class="nav-item <?php if(is_page('contact')) echo "active" ?>"><a href="<?php echo esc_url(site_url('contact')) ?>" class="inner-link nav-link">Contact</a></li>
           </li>
         </ul>
       </div>

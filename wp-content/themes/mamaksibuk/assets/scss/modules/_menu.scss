@@ -8,10 +8,31 @@ header {
   }
 }
 
+.navbar-nav,
+.footer-navbar {
+  .nav-item {
+    &.active {
+      a {
+        font-weight: bold;
+        color: var(--base-color) !important
+      }
+    }
+
+    a:hover {
+      color: var(--base-color)
+    }
+
+    .nav-link {
+      opacity: 1 !important;
+    }
+  }
+}
+
 .home {
   header {
     .navbar {
       position: relative;
+
       @media (min-width: 992px) {
         position: fixed;
       }

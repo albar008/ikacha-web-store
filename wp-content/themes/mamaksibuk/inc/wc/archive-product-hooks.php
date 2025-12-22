@@ -71,7 +71,7 @@ function archive_product_hooks_customizations()
     <section class="<?php echo is_product() ? 'half-section' : 'pt-0' ?>">
       <div class="container">
         <div class="row">
-          <div class="col-12 <?php echo is_shop() ? 'col-md-8 order-last order-md-first' : '' ?>">
+          <div class="col-12 <?php echo (is_shop() || is_product_category()) ? 'col-md-8 order-last order-md-first' : '' ?>">
             <?php
   }
 
@@ -84,7 +84,7 @@ function archive_product_hooks_customizations()
           <?php
   }
 
-  if (is_shop()) {
+  if (is_shop() || is_product_category()) {
     add_action('woocommerce_after_main_content', 'mamak_before_sidebar_col', 12);
 
     function mamak_before_sidebar_col()

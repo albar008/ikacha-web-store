@@ -82,7 +82,7 @@ if (!comments_open()) {
                 'title_reply_after' => '</h4>',
                 'comment_notes_after' => '',
                 'label_submit' => esc_html__('Submit', 'woocommerce'),
-                'class_submit' => 'btn btn-medium btn-round-edge btn-dark-gray btn-box-shadow mt-30px w-100 fw-400',
+                'class_submit' => 'btn btn-dark-gray btn-small btn-round-edge submit',
                 'submit_button' => '<button id="%2$s" type="submit" class="%3$s">%4$s</button>',
                 'logged_in_as' => '',
                 'comment_field' => '',

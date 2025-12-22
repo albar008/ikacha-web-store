@@ -10,6 +10,45 @@ define('STRICT_PAGES', ['home', 'about']);
 /**
  * Get information about available image sizes
  */
+
+function get_comment_depth($comment, $comments)
+{
+  $depth = 1;
+
+  while ($comment && $comment->comment_parent != 0) {
+    $depth++;
+    $comment = wp_list_filter($comments, [
+      'comment_ID' => $comment->comment_parent
+    ]);
+    if ($comment) {
+      $comment = array_values($comment)[0];
+    }
+  }
+
+  return $depth;
+}
+
+function wpdocs_get_paginated_links($query)
+{
+  // When we're on page 1, 'paged' is 0, but we're counting from 1,
+  // so we're using max() to get 1 instead of 0
+  $currentPage = max(1, get_query_var('paged', 1));
+
+  // This creates an array with all available page numbers, if there
+  // is only *one* page, max_num_pages will return 0, so here we also
+  // use the max() function to make sure we'll always get 1
+  $pages = range(1, max(1, $query->max_num_pages));
+
+  // Now, map over $pages and return the page number, the url to that
+  // page and a boolean indicating whether that number is the current page
+  return array_map(function ($page) use ($currentPage) {
+    return (object) array(
+      "isCurrent" => $page == $currentPage,
+      "page" => $page,
+      "url" => get_pagenum_link($page)
+    );
+  }, $pages);
+}
 function get_image_sizes($size = '')
 {
   $wp_additional_image_sizes = wp_get_additional_image_sizes();
@@ -105,14 +144,14 @@ add_action('admin_init', function () {
   }
 
   if (
-        $pagenow === 'post-new.php' &&
-        isset($_GET['post_type']) &&
-        $_GET['post_type'] === 'page'
-    ) {
-        if ( ! current_user_can('administrator') ) {
-            wp_die('You do not have permission to create a new page.');
-        }
+    $pagenow === 'post-new.php' &&
+    isset($_GET['post_type']) &&
+    $_GET['post_type'] === 'page'
+  ) {
+    if (!current_user_can('administrator')) {
+      wp_die('You do not have permission to create a new page.');
     }
+  }
 });
 
 function perm($return, $id, $new_title, $new_slug)
@@ -150,7 +189,7 @@ function theme_enqueue_styles()
   // wp_deregister_script('jquery');
   wp_register_style('icon-style', get_theme_file_uri('assets/css/icon.min.css'));
   wp_register_style('vendors-style', get_theme_file_uri('assets/css/vendors.min.css'));
-  wp_register_style('pre-style', get_theme_file_uri('build/style-index.css'));
+  wp_register_style('pre-style', get_theme_file_uri('build/style-pre-style.css'));
   wp_enqueue_style('main-style', get_theme_file_uri('build/index.css'), ['vendors-style', 'icon-style', 'pre-style']);
 
   // wp_register_script('jq', get_theme_file_uri('assets/js/jquery.js'), [], null, true);
@@ -521,6 +560,63 @@ function my_callback_pre_get_posts($query)
 }
 add_action('pre_get_posts', 'my_callback_pre_get_posts');
 
+add_action('delete_attachment', function ($post_id) {
+  if (get_field('is_default_attach', $post_id)) {
+    wp_die('Default image cannot be deleted.');
+  }
+});
+
+function mytheme_comment($comment, $args, $depth)
+{
+  ?>
+  <li>
+    <div class="d-block d-md-flex w-100 align-items-center align-items-md-start ">
+      <div class="w-90px sm-w-65px sm-mb-10px">
+        <img src="https://placehold.co/130x130" class="rounded-circle" alt="">
+      </div>
+      <div class="w-100 ps-30px last-paragraph-no-margin sm-ps-0">
+        <a href="#" class="text-dark-gray fw-500"><?php echo $comment->comment_author ?></a>
+        <?php
+        comment_reply_link([
+          'depth' => $depth,
+          'max_depth' => $args['max_depth'],
+          'reply_text' => 'Reply'
+        ]);
+        ?>
+        <div class="fs-14 lh-24 mb-10px"><?php echo get_comment_time('d M Y H:i:s') ?></div>
+        <p class="w-85 sm-w-100"><?php echo esc_html($comment->comment_content) ?></p>
+      </div>
+    </div>
+    <?php
+}
+
+//Comment Field Order
+add_filter('comment_form_fields', 'mo_comment_fields_custom_order');
+function mo_comment_fields_custom_order($fields)
+{
+  global $post;
+  if ($post->post_type !== 'product') {
+
+    $comment_field = $fields['comment'];
+    $author_field = $fields['author'];
+    $email_field = $fields['email'];
+    $url_field = $fields['url'];
+    $cookies_field = $fields['cookies'];
+    unset($fields['comment']);
+    unset($fields['author']);
+    unset($fields['email']);
+    unset($fields['url']);
+    unset($fields['cookies']);
+    // the order of fields is the order below, change it as needed:
+    $fields['author'] = $author_field;
+    $fields['email'] = $email_field;
+    $fields['url'] = $url_field;
+    $fields['comment'] = $comment_field;
+    $fields['cookies'] = $cookies_field;
+    // done ordering, now return the fields:
+  }
+  return $fields;
+}
 
 // Remove
 remove_action('wp_head', 'rsd_link');

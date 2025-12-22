@@ -71,12 +71,12 @@ if (!function_exists('wp_body_open')) {
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav alt-font">
-              <li class="nav-item"><a href="<?php echo esc_url(site_url('/')) ?>" class="nav-link">Home</a></li>
-              <li class="nav-item"><a href="<?php echo esc_url(site_url('about')) ?>" class="nav-link">Who we are</a>
+              <li class="nav-item <?php if(is_front_page()) echo "active" ?>"><a href="<?php echo esc_url(site_url('/')) ?>" class="nav-link">Home</a></li>
+              <li class="nav-item <?php if(is_page('about')) echo "active" ?>"><a href="<?php echo esc_url(site_url('about')) ?>" class="nav-link">Who we are</a>
               </li>
-              <li class="nav-item"><a href="<?php echo esc_url(site_url('shop')) ?>" class="nav-link">Shop</a></li>
-              <li class="nav-item"><a href="<?php echo esc_url(site_url('blog')) ?>" class="nav-link">Blog</a></li>
-              <li class="nav-item"><a href="<?php echo esc_url(site_url('contact')) ?>" class="nav-link">Contact</a>
+              <li class="nav-item <?php if(is_shop() or is_product() or is_cart() or is_checkout()) echo "active" ?>"><a href="<?php echo esc_url(site_url('shop')) ?>" class="nav-link">Shop</a></li>
+              <li class="nav-item <?php if(get_post_type() === 'post') echo "active" ?>"><a href="<?php echo esc_url(site_url('blog')) ?>" class="nav-link">Blog</a></li>
+              <li class="nav-item <?php if(is_page('contact')) echo "active" ?>"><a href="<?php echo esc_url(site_url('contact')) ?>" class="nav-link">Contact</a>
               </li>
             </ul>
           </div>

@@ -1,0 +1,7 @@
+.alb-pagination-style {
+  .page-link.current {
+    background: var(--dark-gray) !important;
+    box-shadow: 0 0 10px hsla(0, 0%, 9%, .15) !important;
+    color: var(--white) !important;
+  }
+}

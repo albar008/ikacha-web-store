@@ -59,7 +59,8 @@ while (have_posts()) {
                 <?php } ?>
               </figure>
             </div>
-            <div class="text-w-image__content" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+            <div class="text-w-image__content"
+              data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
               <span
                 class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px"><?php echo get_field('about_sec_subtitle') ?></span>
               <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px mb-3">
@@ -110,17 +111,15 @@ while (have_posts()) {
             <!-- start features box item -->
             <div class="col-grid icon-with-text-style-07 transition-inner-all">
               <div
-                class="hover-box dark-hover p-55px lg-p-30px feature-box-grid-child overflow-hidden bg-dark-slate-blue text-start box-shadow-double-large-hover">
+                class="hover-box border-radius-6px dark-hover p-55px lg-p-30px feature-box-grid-child overflow-hidden bg-dark-slate-blue text-start box-shadow-double-large-hover">
                 <div class="feature-box-icon min-h-150px sm-min-h-100px mb-20 z-index-9">
-                  <i
-                    class="<?php echo get_sub_field('core_value_icon') ?> icon-extra-large text-white"></i>
+                  <i class="<?php echo get_sub_field('core_value_icon') ?> icon-extra-large text-white"></i>
                 </div>
                 <div class="feature-box-title fs-200 fw-600 text-black opacity-2 ls-minus-10px">
                   <?php echo get_sub_field('core_value_name') ?>
                 </div>
                 <div class="feature-box-content last-paragraph-no-margin">
-                  <span
-                    class="d-inline-block text-white mb-5px fs-18"><?php echo get_sub_field('core_value_title') ?></span>
+                  <span class="d-inline-block text-white mb-5px fs-18"><?php echo get_sub_field('core_value_title') ?></span>
                   <p class="w-90 xl-w-100 lh-30 text-light-opacity lh-30 text-light-opacity">
                     <?php echo get_sub_field('core_value_desc') ?>
                   </p>
@@ -148,8 +147,7 @@ while (have_posts()) {
             <h3 class="alt-font text-dark-gray mb-30px md-mb-25px fw-600 ls-minus-1px">
               <?php echo get_field('comp_vision_sec_title') ?>
             </h3>
-            <span
-              class="d-inline-block w-95 md-w-100"><?php echo get_field('comp_vision_content') ?></span>
+            <span class="d-inline-block w-95 md-w-100"><?php echo get_field('comp_vision_content') ?></span>
           </div>
         </div>
         <?php
@@ -158,11 +156,12 @@ while (have_posts()) {
         $visi_alt = $visi_image ? $visi_image['alt'] : '';
 
         $visi_image2 = get_field('comp_vision_img2');
-        $visi_image_url2 = $visi_image2 ? $visi_image2['sizes']['mamak_vis_mis2_image']  : 'https://placehold.co/750x800';
+        $visi_image_url2 = $visi_image2 ? $visi_image2['sizes']['mamak_vis_mis2_image'] : 'https://placehold.co/750x800';
         $visi_alt2 = $visi_image2 ? $visi_image2['alt'] : '';
         ?>
         <div class="col-xl-6 col-lg-6 offset-xl-1 position-relative text-end md-mb-6 sm-mb-10 xs-mb-12">
-          <div class="text-end w-80 md-w-75 ms-auto" data-anime='{ "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
+          <div class="text-end w-80 md-w-75 ms-auto"
+            data-anime='{ "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
             <img src="<?php echo esc_url($visi_image_url2) ?>" alt="<?php echo esc_attr($visi_alt2) ?>"
               class="border-radius-5px">
           </div>
@@ -180,7 +179,8 @@ while (have_posts()) {
   <section class="bg-very-light-gray">
     <div class="container">
       <div class="row align-items-center justify-content-center">
-        <div class="col-lg-6 text-center md-mb-50px" data-anime='{ "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
+        <div class="col-lg-6 text-center md-mb-50px"
+          data-anime='{ "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
           <?php
           $misi_image = get_field('comp_mission_img');
           $misi_image_url = $misi_image ? $misi_image['sizes']['mamak_core_value_image'] : 'https://placehold.co/600x750';
@@ -188,8 +188,7 @@ while (have_posts()) {
           ?>
           <figure class="position-relative m-0">
             <div class="position-relative d-inline-block">
-              <img class="w-90 border-radius-5px" src="<?php echo $misi_image_url ?>"
-                alt="<?php echo $misi_alt ?>" />
+              <img class="w-90 border-radius-5px" src="<?php echo $misi_image_url ?>" alt="<?php echo $misi_alt ?>" />
             </div>
             <figcaption
               class="position-absolute bg-white box-shadow-quadruple-large border-radius-5px bottom-50px xs-bottom-35px left-minus-30px md-left-minus-0px ps-50px pe-50px pt-35px pb-35px xs-p-20px w-320px xs-w-250px text-center last-paragraph-no-margin">
@@ -206,21 +205,30 @@ while (have_posts()) {
             </figcaption>
           </figure>
         </div>
-        <div class="col-xl-5 offset-xl-1 col-lg-6 col-md-8" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+        <div class="col-xl-5 offset-xl-1 col-lg-6 col-md-8"
+          data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
           <span
             class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px"><?php echo get_field('comp_mission_sec_subtitle') ?></span>
           <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px">
             <?php echo get_field('comp_mission_sec_title') ?>
           </h3>
-          <span
-              class="d-inline-block w-95 md-w-100"><?php echo get_field('comp_mission_content') ?></span>
-          </div>
+          <span class="d-inline-block w-95 md-w-100"><?php echo get_field('comp_mission_content') ?></span>
         </div>
       </div>
+    </div>
     </div>
   </section>
   <!-- end section -->
   <!-- start section -->
+  <?php
+  $coachArgs = [
+    'post_type' => 'coach',
+    'posts_per_page' => -1,
+    'orderby' => 'menu_order',
+    'order' => 'ASC',
+  ];
+  $coaches = new WP_Query($coachArgs);
+  ?>
   <section class="background-position-center-top sm-background-image-none">
     <div class="container">
       <div class="row justify-content-center mb-3">
@@ -233,89 +241,54 @@ while (have_posts()) {
       <div class="row-grid row-grid--4 gap-half-3 justify-self-center"
         data-anime='{ "el": "childs", "translateY": [15, 0], "translateX": [-15, 0], "opacity": [0,1], "duration": 800, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
         <!-- start team member item -->
-        <div class="col-grid text-center team-style-01 md-mb-30px">
-          <figure class="mb-0 hover-box box-hover bg-white light-hover position-relative box-shadow-quadruple-large">
-            <img src="https://placehold.co/600x759" alt="" />
-            <figcaption class="w-100 p-30px bg-white">
-              <div class="position-relative z-index-1 overflow-hidden">
-                <span class="d-block alt-font fw-700 text-dark-gray lh-26 fs-18">Jeremy dupont and John Doe</span>
-                <span class="text-light-opacity text-uppercase fs-15">Founder</span>
-                <div class="social-icon hover-text mt-20px lg-mt-10px">
-                  <a href="https://www.facebook.com/" target="_blank"><i
-                      class="fa-brands fa-facebook-f icon-small"></i></a>
-                  <a href="https://www.instagram.com/" target="_blank"><i
-                      class="fa-brands fa-instagram icon-small"></i></a>
-                  <a href="https://www.twitter.com/" target="_blank"><i class="fa-brands fa-twitter icon-small"></i></a>
-                  <a href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble icon-small"></i></a>
-                </div>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-        <!-- end team member item -->
-        <!-- start team member item -->
-        <div class="col-grid text-center team-style-01 md-mb-30px">
-          <figure class="mb-0 hover-box box-hover bg-white light-hover position-relative box-shadow-quadruple-large"">
-            <img src="https://placehold.co/600x759" alt="" />
-            <figcaption class="w-100 p-30px bg-white">
-              <div class="position-relative z-index-1 overflow-hidden">
-                <span class="d-block alt-font fw-700 text-dark-gray lh-26 fs-18">Jessica dover</span>
-                <span class="text-light-opacity text-uppercase fs-15">Officer</span>
-                <div class="social-icon hover-text mt-20px lg-mt-10px">
-                  <a href="https://www.facebook.com/" target="_blank"><i
-                      class="fa-brands fa-facebook-f icon-small"></i></a>
-                  <a href="https://www.instagram.com/" target="_blank"><i
-                      class="fa-brands fa-instagram icon-small"></i></a>
-                  <a href="https://www.twitter.com/" target="_blank"><i class="fa-brands fa-twitter icon-small"></i></a>
-                  <a href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble icon-small"></i></a>
-                </div>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-        <!-- end team member item -->
-        <!-- start team member item -->
-        <div class="col-grid text-center team-style-01 xs-mb-30px">
-          <figure class="mb-0 hover-box box-hover light-hover position-relative box-shadow-quadruple-large"">
-            <img src="https://placehold.co/600x759" alt="" />
-            <figcaption class="w-100 p-30px bg-white">
-              <div class="position-relative z-index-1 overflow-hidden">
-                <span class="d-block alt-font fw-700 text-dark-gray lh-26 fs-18">Herman miller</span>
-                <span class="text-light-opacity text-uppercase fs-15">Advisor</span>
-                <div class="social-icon hover-text mt-20px lg-mt-10px">
-                  <a href="https://www.facebook.com/" target="_blank"><i
-                      class="fa-brands fa-facebook-f icon-small"></i></a>
-                  <a href="https://www.instagram.com/" target="_blank"><i
-                      class="fa-brands fa-instagram icon-small"></i></a>
-                  <a href="https://www.twitter.com/" target="_blank"><i class="fa-brands fa-twitter icon-small"></i></a>
-                  <a href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble icon-small"></i></a>
-                </div>
-              </div>
-              <!-- <div class="box-overlay bg-white"></div> -->
-            </figcaption>
-          </figure>
-        </div>
-        <!-- end team member item -->
-        <!-- start team member item -->
-        <div class="col-grid text-center team-style-01">
-          <figure class="mb-0 hover-box box-hover light-hover position-relative box-shadow-quadruple-large"">
-            <img src="https://placehold.co/600x759" alt="" />
-            <figcaption class="w-100 p-30px bg-white">
-              <div class="position-relative z-index-1 overflow-hidden">
-                <span class="d-block alt-font fw-700 text-dark-gray lh-26 fs-18">John parker</span>
-                <span class="text-light-opacity text-uppercase fs-15">Consultant</span>
-                <div class="social-icon hover-text mt-20px lg-mt-10px">
-                  <a href="https://www.facebook.com/" target="_blank"><i
-                      class="fa-brands fa-facebook-f icon-small"></i></a>
-                  <a href="https://www.instagram.com/" target="_blank"><i
-                      class="fa-brands fa-instagram icon-small"></i></a>
-                  <a href="https://www.twitter.com/" target="_blank"><i class="fa-brands fa-twitter icon-small"></i></a>
-                  <a href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble icon-small"></i></a>
-                </div>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
+        <?php
+        if ($coaches->have_posts()) {
+          while ($coaches->have_posts()) {
+            $coaches->the_post();
+            $coach_image = get_field('coach_content_img');
+            $coach_name = get_field('');
+            $coach_role = get_field('coach_role');
+            $coach_role_text = get_field('coach_role_text');
+
+            // Sosmed URLS
+            $coach_fb_url = get_field('fb_url');
+            $coach_insta_url = get_field('insta_url');
+            $coach_linkedin_url = get_field('linkedin_url');
+
+            if ($coach_role['value'] === 'founder' || $coach_role['value'] === 'co-founder') {
+              $coach_role_text = $coach_role['label'];
+            }
+            ?>
+            <div class="col-grid text-center team-style-01 md-mb-30px">
+              <figure class="mb-0 border-radius-6px overflow-x-hidden overflow-y-hidden hover-box box-hover bg-white light-hover position-relative box-shadow-quadruple-large">
+                <img src="<?php echo $coach_image ? $coach_image['sizes']['large'] : 'https://placehold.co/600x759' ?>"
+                  alt="<?php echo $coach_image['alt'] ?>" />
+                <figcaption class="w-100 p-30px bg-white">
+                  <div class="position-relative z-index-1 overflow-hidden">
+                    <span class="d-block alt-font fw-700 text-dark-gray lh-26 fs-18"><?php the_title() ?></span>
+                    <span class="text-light-opacity text-uppercase fs-15"><?php echo $coach_role_text ?></span>
+                    <div class="social-icon dynamic-container hover-text mt-20px lg-mt-10px">
+                      <?php if ($coach_fb_url) { ?>
+                        <a rel="noopener noreferrer" href="https://www.facebook.com/" target="_blank"><i
+                            class="fa-brands fa-facebook-f icon-small"></i></a>
+                      <?php } ?>
+                      <?php if ($coach_insta_url) { ?>
+                        <a rel="noopener noreferrer" href="https://www.instagram.com/" target="_blank"><i
+                            class="fa-brands fa-instagram icon-small"></i></a>
+                      <?php } ?>
+                      <?php if ($coach_linkedin_url) { ?>
+                        <a rel="noopener noreferrer" href="https://www.twitter.com/" target="_blank"><i
+                            class="fa-brands fa-linkedin-in icon-small"></i></a>
+                      <?php } ?>
+                    </div>
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+          <?php }
+        }
+        wp_reset_postdata();
+        ?>
         <!-- end team member item -->
       </div>
     </div>

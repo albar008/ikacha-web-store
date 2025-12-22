@@ -26,7 +26,7 @@ while (have_posts()) {
             data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["<?php echo get_field('home_header_title') ?>"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'>
           </h2>
           <div>
-            <a href="<?php echo $cta_btn_link ?>" target="_blank"
+            <a href="<?php echo $cta_btn_link ?>"
               class="btn btn-large btn-gradient-emerald-blue-emerald-green btn-hover-animation-switch btn-round-edge btn-box-shadow me-20px xs-m-10px">
               <span>
                 <span class="btn-text fw-700"><?php echo get_field('home_cta_text') ?></span>
@@ -130,35 +130,35 @@ while (have_posts()) {
             <!-- start fancy text box item -->
             <div class="col-grid">
               <div class="services-box-style-01 hover-box box-shadow-quadruple-large"">
-                <div class="position-relative box-image border-radius-6px overflow-hidden">
-                  <a href="#popup-modal-<?php the_ID() ?>" class="modal-popup">
-                    <img
-                      src="<?php echo $service_image ? $service_image['sizes']['mamak_service_image'] : 'https://placehold.co/755x510' ?>"
-                      alt="<?php echo $service_image['alt'] ?>">
-                    <div class="box-overlay bg-black-transparent-medium"></div>
-                    <span
-                      class="d-flex justify-content-center align-items-center mx-auto icon-box absolute-middle-center z-index-1 w-65px h-65px rounded-circle border border-color-transparent-white border-1"><i
-                        class="bi bi-arrow-right-short text-white icon-very-medium d-flex"></i></span>
-                  </a>
-                </div>
-                <div class="p-25px last-paragraph-no-margin text-center">
-                  <h5 class="fs-20 text-dark-gray alt-font fw-600 mb-5px"><?php the_title() ?></h5>
-                  <p class="lh-26"><?php echo wp_trim_words(get_field('srv_content'), 5, '...'); ?></p>
-                </div>
-                <div id="popup-modal-<?php the_ID() ?>"
-                  class="white-popup-block mfp-hide col-xl-5 col-lg-6 col-md-7 col-11 mx-auto bg-white text-center modal-popup-main p-50px">
-                  <span class="text-dark-gray fw-600 fs-24 mb-10px d-block"><?php the_title() ?></span>
-                  <p><?php echo get_field('srv_content') ?></p>
-                  <a class="btn btn-small btn-rounded btn-dark-gray popup-modal-dismiss mt-10px" href="#">Dismiss</a>
-                </div>
+                <div class=" position-relative box-image border-radius-6px overflow-hidden">
+                <a href="#popup-modal-<?php the_ID() ?>" class="modal-popup">
+                  <img
+                    src="<?php echo $service_image ? $service_image['sizes']['mamak_service_image'] : 'https://placehold.co/755x510' ?>"
+                    alt="<?php echo $service_image['alt'] ?>">
+                  <div class="box-overlay bg-black-transparent-medium"></div>
+                  <span
+                    class="d-flex justify-content-center align-items-center mx-auto icon-box absolute-middle-center z-index-1 w-65px h-65px rounded-circle border border-color-transparent-white border-1"><i
+                      class="bi bi-arrow-right-short text-white icon-very-medium d-flex"></i></span>
+                </a>
+              </div>
+              <div class="p-25px last-paragraph-no-margin text-center">
+                <h5 class="fs-20 text-dark-gray alt-font fw-600 mb-5px"><?php the_title() ?></h5>
+                <p class="lh-26"><?php echo wp_trim_words(get_field('srv_content'), 5, '...'); ?></p>
+              </div>
+              <div id="popup-modal-<?php the_ID() ?>"
+                class="white-popup-block mfp-hide col-xl-5 col-lg-6 col-md-7 col-11 mx-auto bg-white text-center modal-popup-main p-50px">
+                <span class="text-dark-gray fw-600 fs-24 mb-10px d-block"><?php the_title() ?></span>
+                <p><?php echo get_field('srv_content') ?></p>
+                <a class="btn btn-small btn-rounded btn-dark-gray popup-modal-dismiss mt-10px" href="#">Dismiss</a>
               </div>
             </div>
-            <!-- end fancy text box item -->
-          <?php }
+          </div>
+          <!-- end fancy text box item -->
+        <?php }
         }
         wp_reset_postdata();
         ?>
-      </div>
+    </div>
     </div>
   </section>
   <!-- end section -->
@@ -234,7 +234,8 @@ while (have_posts()) {
             <div class="col-auto icon-with-text-style-08">
               <div class="feature-box">
                 <div class="feature-box-content alt-font text-dark-gray fs-22 fw-600">
-                  <?php echo get_field('countdown_text') ?> <span class="text-decoration-line-bottom"><?php echo get_field('countdown_text_highlight') ?></span>
+                  <?php echo get_field('countdown_text') ?> <span
+                    class="text-decoration-line-bottom"><?php echo get_field('countdown_text_highlight') ?></span>
                   <div class="d-flex justify-content-center countdown-style-01 countdown-style-brand">
                     <div data-enddate="<?php echo get_field('countdown_timer_end') ?>" class="countdown"></div>
                   </div>
@@ -286,21 +287,27 @@ while (have_posts()) {
             class="blog-grid blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-double-extra-large"
             data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1000, "willchange": "transform", "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
             <li class="grid-sizer"></li>
-            <!-- start blog item -->
-            <li class="grid-item">
-              <?php get_template_part('template-parts/partials/content', 'blog') ?>
-            </li>
-            <!-- end blog item -->
-            <!-- start blog item -->
-            <li class="grid-item">
-              <?php get_template_part('template-parts/partials/content', 'blog') ?>
-            </li>
-            <!-- end blog item -->
-            <!-- start blog item -->
-            <li class="grid-item">
-              <?php get_template_part('template-parts/partials/content', 'blog') ?>
-            </li>
-            <!-- end blog item -->
+            <?php
+            $latestPostsArgs = [
+              'post_type' => 'post',        // Atau custom post type seperti 'project'
+              'posts_per_page' => 3,             // Ambil 2 post
+              'orderby' => 'date',        // Berdasarkan tanggal
+              'order' => 'DESC',        // Urutan terbaru duluan
+            ];
+            $latestPosts = new WP_Query($latestPostsArgs);
+            if ($latestPosts->have_posts()) {
+              while ($latestPosts->have_posts()) {
+                $latestPosts->the_post();
+                ?>
+                <!-- start blog item -->
+                <li class="grid-item">
+                  <?php get_template_part('template-parts/partials/content', 'blog') ?>
+                </li>
+                <!-- end blog item -->
+              <?php }
+            } 
+            wp_reset_postdata();
+            ?>
           </ul>
         </div>
       </div>

@@ -46,16 +46,19 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  &--4{
+
+  &--4 {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
-  @for $i from 1 through 5{
-    &.gap-#{$i}{
+
+  @for $i from 1 through 5 {
+    &.gap-#{$i} {
       gap: #{$i*10}px;
     }
   }
-  @for $i from 1 through 5{
-    &.gap-half-#{$i}{
+
+  @for $i from 1 through 5 {
+    &.gap-half-#{$i} {
       gap: #{$i*10-5}px;
     }
   }
@@ -91,11 +94,43 @@
     display: table-row;
 
     >span {
-      &:first-child{
+      &:first-child {
         font-weight: 500;
       }
+
       display: table-cell;
       padding-right: 10px;
     }
+  }
+}
+
+%form-text-shadow {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d1d5db;
+}
+
+.form-field-layout-ext {
+  @extend %form-text-shadow;
+
+  &:focus {
+    @extend %form-text-shadow;
+  }
+}
+
+.comment-form-cookies-consent {
+  justify-content: start;
+  align-items: center;
+  // display: inline-flex;
+  margin-top: 2rem !important;
+
+  #wp-comment-cookies-consent {
+    width: auto;
+    display: inline-block;
+    flex: 1;
+    margin-right: 10px;
+  }
+
+  label {
+    flex: 7;
   }
 }

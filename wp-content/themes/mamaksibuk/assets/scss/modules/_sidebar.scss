@@ -1,0 +1,22 @@
+.sidebar-product-filters{
+  padding-inline-start: 20px;
+}
+.sidebar-cat-filter {
+  &__list {
+    list-style-type: disc;
+    padding-inline-start: 0;
+    margin-inline-start: 0;
+    list-style-position: inside;
+
+    li {
+      list-style: inherit;
+
+      &.current-cat {
+        color: var(--base-color);
+        > a {
+          color:inherit;
+        }
+      }
+    }
+  }
+}
