@@ -15,7 +15,11 @@ class Grid {
     this.wpCommentChildrenEls = document.querySelectorAll(
       ".blog-comment .children"
     );
-    this.wpRespond = document.getElementById('respond');
+    this.wpRespond = document.getElementById("respond");
+
+    // TNP FORM
+    this.tnpForms = document.querySelectorAll(".tnp-form");
+
     this._init();
   }
   _init() {
@@ -51,13 +55,30 @@ class Grid {
     }
 
     for (let wpCommentChildrenItem of this.wpCommentChildrenEls) {
-      wpCommentChildrenItem.classList.add('child-comment');
-      wpCommentChildrenItem.classList.remove('children');
+      wpCommentChildrenItem.classList.add("child-comment");
+      wpCommentChildrenItem.classList.remove("children");
     }
 
-    this.wpRespond?.querySelector('.comment-form-author #author')?.classList.add('form-control');
-    this.wpRespond?.querySelector('.comment-form-email #email')?.classList.add('form-control');
-    this.wpRespond?.querySelector('.comment-form-url #url')?.classList.add('form-control');
+    this.wpRespond
+      ?.querySelector(".comment-form-author #author")
+      ?.classList.add("form-control");
+    this.wpRespond
+      ?.querySelector(".comment-form-email #email")
+      ?.classList.add("form-control");
+    this.wpRespond
+      ?.querySelector(".comment-form-url #url")
+      ?.classList.add("form-control");
+
+    for (let tnpForm of this.tnpForms) {
+      const tnpInputs = tnpForm.querySelectorAll('input[class^="tnp"]');
+      const tnpSelects = tnpForm.querySelectorAll('select[class^="tnp"]');
+      for (let tnpInput of tnpInputs) {
+        tnpInput.classList.add("form-control");
+      }
+      for (let tnpSelect of tnpSelects) {
+        tnpSelect.classList.add("form-control");
+      }
+    }
   }
 }
 

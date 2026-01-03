@@ -1,0 +1,16 @@
+.tnp-form{
+  button.tnp-submit, input[type='submit']{
+    border-radius: 6px !important;
+    padding-inline: 2rem !important;
+  }
+}
+.tnp-profile{
+  margin-inline: auto !important;
+}
+.tnp-button-form{
+  &.tnp-unsubscribe {
+    button.tnp-submit{
+      border-radius: 6px !important;
+    }
+  }
+}

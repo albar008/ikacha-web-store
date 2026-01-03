@@ -2,8 +2,7 @@
 get_header();
 ?>
 <!-- start section -->
-<section class="cover-background full-screen ipad-top-space-margin md-h-550px"
-  style="background-image: url(images/404-bg.jpg);">
+<section class="cover-background full-screen ipad-top-space-margin md-h-550px">
   <div class="container h-100">
     <div class="row justify-content-center h-100">
       <div class="col-12 col-xl-6 col-lg-7 col-md-9"
