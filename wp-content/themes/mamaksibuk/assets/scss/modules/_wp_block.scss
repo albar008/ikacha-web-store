@@ -1,0 +1,32 @@
+.wp-block-post-time-to-read{
+  background-color: var(--base-light-color);
+  padding-inline: 10px;
+  font-style: italic;
+  font-weight: 600;
+  display: inline-block;
+  border-radius: 6px;
+  &::before{
+    content: 'Time to read : ';
+    margin-right: 10px;
+  }
+}
+
+@mixin is-style-my-custom-block($color: DarkGray) {
+  padding-inline-start: 10px;
+  border-left: 5px solid $color;
+}
+
+.is-style-my-custom-block-quote{
+  &--primary{
+    @include is-style-my-custom-block(var(--base-color))
+  }
+  &--secondary{
+    @include is-style-my-custom-block(var(--dark-gray))
+  }
+}
+
+.has-drop-cap:first-letter {
+    font-weight: 700;
+    font-size: 3rem !important;
+    padding-right: 0.08em;
+}

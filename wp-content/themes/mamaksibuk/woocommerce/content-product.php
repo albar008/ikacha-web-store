@@ -24,7 +24,7 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class( 'grid-item', $product ); ?>>
+<li <?php wc_product_class( 'grid-item col-grid', $product ); ?>>
    <div class="shop-box mb-10px">
 	<?php
 	/**

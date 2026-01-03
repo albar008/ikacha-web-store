@@ -28,11 +28,11 @@
   </div>
   <div class="card-body p-13 md-p-11">
     <a title="<?php the_title() ?>" href="<?php the_permalink() ?>"
-      class="card-title mb-15px alt-font fw-700 fs-18 lh-30 text-dark-gray text-dark-gray-hover d-inline-block"><?php echo wp_strip_all_tags(wp_trim_words(mb_strimwidth(get_the_title(), 0, 30, '...'), 10)) ?></a>
+      class="card-title mb-15px alt-font fw-700 fs-18 lh-30 text-dark-gray text-dark-gray-hover d-inline-block"><?php echo wp_strip_all_tags(wp_trim_words(mb_strimwidth(get_the_title(), 0, 50, '...'), 15)) ?></a>
     <p>
       <?php
       if (has_excerpt()) {
-        echo wp_strip_all_tags(wp_trim_words(get_the_excerpt(), 15));
+        echo wp_strip_all_tags(wp_trim_words(get_the_excerpt(), 10));
       } else {
         echo wp_strip_all_tags(wp_trim_words(get_the_content(), 15));
       }

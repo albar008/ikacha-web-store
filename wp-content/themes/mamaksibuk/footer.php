@@ -12,12 +12,21 @@
       <!-- start footer column -->
       <div class="col text-center text-lg-end">
         <ul class="footer-navbar fw-500 lh-normal">
-          <li class="nav-item <?php if(is_front_page()) echo "active" ?>"><a href="<?php echo esc_url(site_url('/')) ?>"
+          <li class="nav-item <?php if (is_front_page())
+            echo "active" ?>"><a href="<?php echo esc_url(site_url('/')) ?>"
               class="inner-link nav-link">Home</a></li>
-          <li class="nav-item <?php if(is_page('about')) echo "active" ?>"><a href="<?php echo esc_url(site_url('about')) ?>" class="inner-link nav-link">Who we are</a></li>
-          <li class="nav-item <?php if(is_shop() or is_product() or is_cart() or is_checkout()) echo "active" ?>"><a href="<?php echo esc_url(site_url('shop')) ?>" class="inner-link nav-link">Shop</a>
-          <li class="nav-item <?php if(get_post_type() === 'post') echo "active" ?>"><a href="<?php echo esc_url(site_url('blog')) ?>" class="inner-link nav-link">Blog</a></li>
-          <li class="nav-item <?php if(is_page('contact')) echo "active" ?>"><a href="<?php echo esc_url(site_url('contact')) ?>" class="inner-link nav-link">Contact</a></li>
+          <li class="nav-item <?php if (is_page('about'))
+            echo "active" ?>"><a
+                href="<?php echo esc_url(site_url('about')) ?>" class="inner-link nav-link">Who we are</a></li>
+          <li class="nav-item <?php if (is_shop() or is_product() or is_cart() or is_checkout())
+            echo "active" ?>"><a
+                href="<?php echo esc_url(site_url('shop')) ?>" class="inner-link nav-link">Shop</a>
+          <li class="nav-item <?php if (get_post_type() === 'post')
+            echo "active" ?>"><a
+                href="<?php echo esc_url(site_url('blog')) ?>" class="inner-link nav-link">Blog</a></li>
+          <li class="nav-item <?php if (is_page('contact'))
+            echo "active" ?>"><a
+                href="<?php echo esc_url(site_url('contact')) ?>" class="inner-link nav-link">Contact</a></li>
           </li>
         </ul>
       </div>
@@ -32,21 +41,22 @@
       <!-- start footer column -->
       <div
         class="col-xl-7 col-md-8 fs-13 text-center text-md-start last-paragraph-no-margin lh-24 order-2 order-md-1 sm-mt-15px">
-        This site is protected by reCAPTCHA and the Google <a href="#" class="text-decoration-line-bottom">privacy
-          policy</a> and <a href="#" class="text-decoration-line-bottom">terms of service</a> apply. You must not use
-        this website if you disagree with any of these website standard terms and conditions.</div>
+        <p>
+          This website uses essential cookies and security measures (Cloudflare Turnstile) to ensure functionality, prevent spam, and process data in accordance with our <a class="text-decoration-line-bottom" href="<?php echo esc_url(site_url('privacy-policy')) ?>">Privacy Policy</a>.
+        </p>  
+      </div>
       <!-- end footer column -->
       <!-- start footer column -->
       <div class="col-xl-5 col-md-4 text-center text-md-end elements-social social-icon-style-08 order-1 order-md-2">
         <ul class="medium-icon light">
-          <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i
-                class="fa-brands fa-facebook-f"></i></a></li>
-          <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i
-                class="fa-brands fa-instagram"></i></a></li>
-          <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-          </li>
-          <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i
-                class="fa-brands fa-dribbble"></i></a></li>
+          <?php if (have_rows('comp_sosmed_links', 'option')) {
+            while (have_rows('comp_sosmed_links', 'option')) {
+              the_row();
+              ?>
+              <li><a rel="noopener noreferrer" href="<?php echo get_sub_field('comp_sosmed_url') ?>" target="_blank"><i
+                    class="<?php echo get_sub_field('comp_sosmed_icon') ?>"></i></a></li>
+            <?php }
+          } ?>
         </ul>
       </div>
       <!-- end footer column -->
@@ -58,7 +68,7 @@
 <!-- start cookie message -->
 <div id="cookies-model" class="cookie-message bg-dark-gray border-radius-8px">
   <div class="cookie-description fs-14 text-white mb-20px lh-22">We use cookies to enhance your browsing experience,
-    serve personalized ads or content, and analyze our traffic. By clicking "Allow cookies" you consent to our use of
+    , and analyze our traffic. By clicking "Allow cookies" you consent to our use of
     cookies. </div>
   <div class="cookie-btn">
     <a href="#"

@@ -38,19 +38,38 @@ if(get_option('cfturnstile_elementor')) {
       }
     }
     
-    // Enqueue Turnstile API script
-    if (!wp_script_is('cfturnstile', 'enqueued')) {
+    // Determine failsafe mode for Elementor (keeps UI and backend in sync)
+    $failsafe_mode = '';
+    if ( get_option('cfturnstile_failover') && function_exists('cfturnstile_is_cloudflare_down') && cfturnstile_is_cloudflare_down() ) {
+      $failsafe_mode = get_option('cfturnstile_failsafe_type', 'allow');
+      if ( $failsafe_mode !== 'recaptcha' && $failsafe_mode !== 'allow' ) {
+        $failsafe_mode = 'allow';
+      }
+      if ( $failsafe_mode === 'recaptcha' ) {
+        $defer = get_option('cfturnstile_defer_scripts', 1) ? array('strategy' => 'defer') : array();
+        if (!wp_script_is('cfturnstile-recaptcha', 'enqueued')) {
+          wp_enqueue_script('cfturnstile-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), null, $defer);
+        }
+      }
+    }
+
+    // Enqueue Turnstile API script (only when not in failsafe UI mode)
+    if ( $failsafe_mode === '' && !wp_script_is('cfturnstile', 'enqueued')) {
       $defer = get_option('cfturnstile_defer_scripts', 1) ? array('strategy' => 'defer') : array();
       wp_enqueue_script("cfturnstile", "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit", array(), null, $defer);
     }
     
     // Enqueue our custom Elementor integration script
     if (!wp_script_is('cfturnstile-elementor-forms', 'enqueued')) {
+      $deps = array('jquery');
+      if ( $failsafe_mode === '' ) {
+        $deps[] = 'cfturnstile';
+      }
       wp_enqueue_script(
         'cfturnstile-elementor-forms',
         plugins_url('simple-cloudflare-turnstile/js/integrations/elementor-forms.js'),
-        array('cfturnstile', 'jquery'),
-        '2.1',
+        $deps,
+        '2.2',
         true
       );
       
@@ -58,14 +77,15 @@ if(get_option('cfturnstile_elementor')) {
       wp_localize_script('cfturnstile-elementor-forms', 'cfturnstileElementorSettings', array(
         'sitekey' => get_option('cfturnstile_key'),
         'position' => get_option('cfturnstile_elementor_pos', 'before'),
-        'theme' => get_option('cfturnstile_theme')
+        'theme' => get_option('cfturnstile_theme'),
+        'mode' => $failsafe_mode ? $failsafe_mode : 'turnstile',
+        'recaptchaSiteKey' => get_option('cfturnstile_recaptcha_site_key')
       ));
     }
   }
 
   /**
    * Detect if a given page contains Elementor Form or Login widgets.
-   * Best-effort: parses _elementor_data JSON for widgetType 'form' or 'login'.
    * @param int $post_id
    * @return bool
    */
@@ -103,19 +123,38 @@ if(get_option('cfturnstile_elementor')) {
       return;
     }
     
-    // Enqueue Turnstile API script
-    if (!wp_script_is('cfturnstile', 'enqueued')) {
+    // Determine failsafe mode for Elementor (keeps UI and backend in sync)
+    $failsafe_mode = '';
+    if ( get_option('cfturnstile_failover') && function_exists('cfturnstile_is_cloudflare_down') && cfturnstile_is_cloudflare_down() ) {
+      $failsafe_mode = get_option('cfturnstile_failsafe_type', 'allow');
+      if ( $failsafe_mode !== 'recaptcha' && $failsafe_mode !== 'allow' ) {
+        $failsafe_mode = 'allow';
+      }
+      if ( $failsafe_mode === 'recaptcha' ) {
+        $defer = get_option('cfturnstile_defer_scripts', 1) ? array('strategy' => 'defer') : array();
+        if (!wp_script_is('cfturnstile-recaptcha', 'enqueued')) {
+          wp_enqueue_script('cfturnstile-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), null, $defer);
+        }
+      }
+    }
+
+    // Enqueue Turnstile API script (only when not in failsafe UI mode)
+    if ( $failsafe_mode === '' && !wp_script_is('cfturnstile', 'enqueued')) {
       $defer = get_option('cfturnstile_defer_scripts', 1) ? array('strategy' => 'defer') : array();
       wp_enqueue_script("cfturnstile", "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit", array(), null, $defer);
     }
     
     // Enqueue our custom Elementor integration script
     if (!wp_script_is('cfturnstile-elementor-forms', 'enqueued')) {
+      $deps = array('jquery');
+      if ( $failsafe_mode === '' ) {
+        $deps[] = 'cfturnstile';
+      }
       wp_enqueue_script(
         'cfturnstile-elementor-forms',
         plugins_url('simple-cloudflare-turnstile/js/integrations/elementor-forms.js'),
-        array('cfturnstile', 'jquery'),
-        '2.1',
+        $deps,
+        '2.2',
         true
       );
       
@@ -123,7 +162,9 @@ if(get_option('cfturnstile_elementor')) {
       wp_localize_script('cfturnstile-elementor-forms', 'cfturnstileElementorSettings', array(
         'sitekey' => get_option('cfturnstile_key'),
         'position' => get_option('cfturnstile_elementor_pos', 'before'),
-        'theme' => get_option('cfturnstile_theme')
+        'theme' => get_option('cfturnstile_theme'),
+        'mode' => $failsafe_mode ? $failsafe_mode : 'turnstile',
+        'recaptchaSiteKey' => get_option('cfturnstile_recaptcha_site_key')
       ));
     }
   }
@@ -133,19 +174,19 @@ if(get_option('cfturnstile_elementor')) {
   function cfturnstile_elementor_check($record, $ajax_handler){
     if(!cfturnstile_whitelisted()) {
       $error_message = cfturnstile_failed_message();
-      if ( 'POST' === $_SERVER['REQUEST_METHOD'] && isset( $_POST['cf-turnstile-response'] ) ) {
-        $check = cfturnstile_check();
-        $success = $check['success'];
-        if($success != true) {
-          $ajax_handler->add_error_message( $error_message );
-          $ajax_handler->add_error( '', '' );
-          $ajax_handler->is_success = false;
-        }
-      } else {
-        $ajax_handler->add_error_message( $error_message );
-        $ajax_handler->add_error( '', '' );
-        $ajax_handler->is_success = false;
-      }
+    if ( 'POST' === $_SERVER['REQUEST_METHOD'] ) {
+    $check = cfturnstile_check();
+    $success = $check['success'];
+    if($success != true) {
+      $ajax_handler->add_error_message( $error_message );
+      $ajax_handler->add_error( '', '' );
+      $ajax_handler->is_success = false;
+    }
+    } else {
+    $ajax_handler->add_error_message( $error_message );
+    $ajax_handler->add_error( '', '' );
+    $ajax_handler->is_success = false;
+    }
     }
   }
 

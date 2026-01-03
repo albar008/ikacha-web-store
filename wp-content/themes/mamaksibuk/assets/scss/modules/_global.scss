@@ -47,8 +47,32 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 
+  &.grid-product {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(3, minmax(200px, 1fr));
+    }
+
+    @media (768px <= width < 991px) { 
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+    }
+  }
+
+  @media (min-width: 1400px) {
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
+  }
+
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+  }
+
   &--4 {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(4, minmax(250px, 1fr));
+    }
   }
 
   @for $i from 1 through 5 {
@@ -75,11 +99,11 @@
   background-color: var(--dark-slate-blue);
 }
 
-.upcoming-ev-price {
+.highlight-ev-price {
   font-size: 1.2rem;
 
   &::before {
-    content: 'INVESTASI: ';
+    content: 'PRICE: ';
     display: block;
     font-style: italic;
     font-weight: 500;
@@ -117,20 +141,8 @@
   }
 }
 
-.comment-form-cookies-consent {
-  justify-content: start;
-  align-items: center;
-  // display: inline-flex;
-  margin-top: 2rem !important;
-
-  #wp-comment-cookies-consent {
-    width: auto;
-    display: inline-block;
-    flex: 1;
-    margin-right: 10px;
-  }
-
-  label {
-    flex: 7;
-  }
+ul.blog-grid{
+  padding-left: 0;
 }
+
+.com-single-page-links-container {}

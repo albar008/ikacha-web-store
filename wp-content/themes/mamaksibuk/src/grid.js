@@ -15,11 +15,12 @@ class Grid {
     this.wpCommentChildrenEls = document.querySelectorAll(
       ".blog-comment .children"
     );
+    this.wpRespond = document.getElementById('respond');
     this._init();
   }
   _init() {
     for (let grid of this.gridEls) {
-      console.log("Grid", grid.children);
+      // console.log("Grid", grid.children);
     }
 
     for (let dynamicContItem of this.dynamicContEls) {
@@ -53,6 +54,10 @@ class Grid {
       wpCommentChildrenItem.classList.add('child-comment');
       wpCommentChildrenItem.classList.remove('children');
     }
+
+    this.wpRespond?.querySelector('.comment-form-author #author')?.classList.add('form-control');
+    this.wpRespond?.querySelector('.comment-form-email #email')?.classList.add('form-control');
+    this.wpRespond?.querySelector('.comment-form-url #url')?.classList.add('form-control');
   }
 }
 

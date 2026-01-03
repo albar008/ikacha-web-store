@@ -13,15 +13,35 @@ if(get_option('cfturnstile_forminator')) {
 
             ob_start();
 
-            // if cfturnstile script doesnt exist, enqueue it
-            if(!wp_script_is('cfturnstile', 'enqueued')) {
-                wp_register_script("cfturnstile", "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit", array(), '', 'true');
-                wp_print_scripts('cfturnstile');
+            // Determine failsafe UI mode (keeps UI behavior consistent with backend validation)
+            $failsafe_mode = '';
+            if ( get_option('cfturnstile_failover') && function_exists('cfturnstile_is_cloudflare_down') && cfturnstile_is_cloudflare_down() ) {
+                $failsafe_mode = get_option('cfturnstile_failsafe_type', 'allow');
+                if ( $failsafe_mode !== 'recaptcha' && $failsafe_mode !== 'allow' ) {
+                    $failsafe_mode = 'allow';
+                }
+            }
+
+            // Only load Turnstile API in normal mode. In failsafe mode, cfturnstile_field_show()
+            // renders a marker or reCAPTCHA instead, so Turnstile JS would be unnecessary (and can error).
+            if ( $failsafe_mode === '' ) {
+                // if cfturnstile script doesnt exist, enqueue it
+                if(!wp_script_is('cfturnstile', 'enqueued')) {
+                    wp_register_script("cfturnstile", "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit", array(), '', 'true');
+                    wp_print_scripts('cfturnstile');
+                }
             }
             echo "<style>#cf-turnstile-fmntr-".esc_html($form_id)." { margin-left: 0px !important; }</style>";
 
             cfturnstile_field_show('.forminator-button-submit', 'turnstileForminatorCallback', 'forminator-form-' . esc_html($form_id), '-fmntr-' . esc_html($form_id));
+
+            // If failsafe reCAPTCHA is used, ensure the script tag is printed even when the form is
+            // loaded via AJAX (wp_enqueue_script alone may not output in the AJAX response).
+            if ( $failsafe_mode === 'recaptcha' && wp_script_is('cfturnstile-recaptcha', 'enqueued') && !wp_script_is('cfturnstile-recaptcha', 'done') ) {
+                wp_print_scripts('cfturnstile-recaptcha');
+            }
             ?>
+            <?php if ( $failsafe_mode === '' ) { ?>
             <script>
             // On ajax.complete run turnstile.render if element is empty
             jQuery(document).ajaxComplete(function() {
@@ -53,6 +73,7 @@ if(get_option('cfturnstile_forminator')) {
                 });
             });
             </script>
+            <?php } ?>
             <?php
             $cfturnstile = ob_get_contents();
             ob_end_clean();
@@ -74,8 +95,62 @@ if(get_option('cfturnstile_forminator')) {
 	add_action('forminator_custom_form_submit_errors', 'cfturnstile_forminator_check', 10, 3);
 	function cfturnstile_forminator_check($submit_errors, $form_id, $field_data_array){
         if(!cfturnstile_form_disable($form_id, 'cfturnstile_forminator_disable')) {
-            $check = cfturnstile_check();
-            $success = $check['success'];
+            $posted_data = array();
+            if (is_array($field_data_array)) {
+                foreach ($field_data_array as $key => $val) {
+                    // Sometimes Forminator provides an associative array of name => value
+                    if (is_string($key) && !is_array($val) && !is_object($val)) {
+                        $posted_data[$key] = $val;
+                        continue;
+                    }
+                    // Sometimes it provides an array of arrays with keys like ['name' => ..., 'value' => ...]
+                    if (is_array($val) && isset($val['name'])) {
+                        $name = $val['name'];
+                        $value = array_key_exists('value', $val) ? $val['value'] : '';
+                        if (is_string($name)) {
+                            $posted_data[$name] = $value;
+                        }
+                        continue;
+                    }
+                    // Or an array of objects with ->name and ->value
+                    if (is_object($val) && isset($val->name)) {
+                        $name = $val->name;
+                        $value = isset($val->value) ? $val->value : '';
+                        if (is_string($name)) {
+                            $posted_data[$name] = $value;
+                        }
+                    }
+                }
+            }
+
+            $token = '';
+            if (isset($posted_data['cf-turnstile-response']) && !is_array($posted_data['cf-turnstile-response'])) {
+                $token = sanitize_text_field($posted_data['cf-turnstile-response']);
+            }
+
+            $_post_backup = array();
+            $sync_keys = array(
+                'cf-turnstile-response',
+                'cfturnstile_failsafe',
+                'g-recaptcha-response',
+            );
+            foreach ($sync_keys as $sync_key) {
+                $_post_backup[$sync_key] = array_key_exists($sync_key, $_POST) ? $_POST[$sync_key] : null;
+                if (isset($posted_data[$sync_key]) && !is_array($posted_data[$sync_key])) {
+                    $_POST[$sync_key] = sanitize_text_field($posted_data[$sync_key]);
+                }
+            }
+
+            $check = cfturnstile_check($token);
+            foreach ($_post_backup as $sync_key => $old_val) {
+                if ($old_val === null) {
+                    unset($_POST[$sync_key]);
+                } else {
+                    $_POST[$sync_key] = $old_val;
+                }
+            }
+
+            $success = (is_array($check) && isset($check['success'])) ? $check['success'] : false;
             if($success != true) {
                 $submit_errors[]['submit'] = cfturnstile_failed_message();
             }

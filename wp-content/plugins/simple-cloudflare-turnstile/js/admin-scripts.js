@@ -129,3 +129,52 @@ document.addEventListener("DOMContentLoaded", function() {
     setVisibility(this.checked);
   });
 });
+
+/* Widget Text Label Toggle */
+document.addEventListener("DOMContentLoaded", function() {
+  const labelRows = document.querySelectorAll('.cfturnstile-widget-label-text');
+  const toggleInput = document.querySelector('input[name="cfturnstile_widget_label_enable"]');
+
+  if (!toggleInput || labelRows.length === 0) return;
+
+  const setVisibility = (checked) => {
+    labelRows.forEach(el => {
+      el.style.display = checked ? '' : 'none';
+    });
+  };
+
+  setVisibility(toggleInput.checked);
+
+  toggleInput.addEventListener('change', function() {
+    setVisibility(this.checked);
+  });
+});
+
+/* Failsafe Settings Toggle */
+document.addEventListener("DOMContentLoaded", function() {
+  const failsafeEnabled = document.getElementById('cfturnstile_failover');
+  const failsafeType = document.getElementById('cfturnstile_failsafe_type');
+  const failsafeOptions = document.querySelectorAll('.sct-failsafe-options');
+  const recaptchaRows = document.querySelectorAll('.sct-failsafe-recaptcha');
+
+  if (!failsafeEnabled || !failsafeType) return;
+
+  const setRowDisplay = (nodes, show) => {
+    nodes.forEach(el => {
+      el.style.display = show ? '' : 'none';
+    });
+  };
+
+  const updateFailsafeVisibility = () => {
+    const enabled = !!failsafeEnabled.checked;
+    setRowDisplay(failsafeOptions, enabled);
+
+    const useRecaptcha = enabled && (failsafeType.value === 'recaptcha');
+    setRowDisplay(recaptchaRows, useRecaptcha);
+  };
+
+  failsafeEnabled.addEventListener('change', updateFailsafeVisibility);
+  failsafeType.addEventListener('change', updateFailsafeVisibility);
+
+  updateFailsafeVisibility();
+});

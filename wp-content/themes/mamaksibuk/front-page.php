@@ -5,11 +5,11 @@ while (have_posts()) {
   ?>
   <!-- start banner -->
   <?php
-  $hero_image = get_field('home_header_img');
+  $hero_image = get_field('page_header_img');
   $cta_btn_field = get_field('home_cta_link');
   $cta_btn_link = get_permalink($cta_btn_field);
   ?>
-  <section id="home" class="full-screen bg-dark-gray ipad-top-space-margin position-relative md-h-600px sm-h-500px py-0"
+  <section id="home" class="full-screen bg-dark-gray position-relative md-h-600px sm-h-500px py-0"
     data-parallax-background-ratio="0.5"
     style="background-image: url('<?php echo $hero_image ? $hero_image['sizes']['mamak_slider_image'] : 'https://placehold.co/1920x1100' ?>')">
     <div class="opacity-extra-medium bg-gradient-black-green"></div>
@@ -19,11 +19,11 @@ while (have_posts()) {
           data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 400, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'>
           <div>
             <h1 class="text-uppercase mb-15px alt-font text-white opacity-6 fw-500 ls-2px"
-              data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["<?php echo get_field('home_header_subtitle') ?>"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'>
+              data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["<?php echo get_field('page_header_subtitle') ?>"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'>
             </h1>
           </div>
           <h2 class="m-auto text-white alt-font text-shadow-double-large fw-700 mb-45px sm-mb-30px xs-mb-20px"
-            data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["<?php echo get_field('home_header_title') ?>"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'>
+            data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["<?php echo get_field('page_header_title') ?>"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'>
           </h2>
           <div>
             <a href="<?php echo $cta_btn_link ?>"
@@ -81,7 +81,7 @@ while (have_posts()) {
         <div class="col-xl-4 offset-lg-1 col-lg-5 col-md-10 text-center text-lg-start"
           data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
           <span
-            class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px"><?php echo get_field('about_sec_subtitle', $about_page_data->ID) ?></span>
+            class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-base-color ls-1px"><?php echo get_field('about_sec_subtitle', $about_page_data->ID) ?></span>
           <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px">
             <?php echo get_field('about_sec_title', $about_page_data->ID) ?>
           </h3>
@@ -107,9 +107,10 @@ while (have_posts()) {
       <div class="row justify-content-center align-items-center mb-6">
         <div class="col-lg-7 text-center"
           data-anime='{ "el": "childs", "translateY": [30, 1], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue":200, "easing": "easeOutQuad" }'>
-          <span class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px">Professional
-            services</span>
-          <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px">Our expertise.</h3>
+          <span
+            class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-base-color ls-1px"><?php echo get_theme_mod('set_home_service_subtitle') ?></span>
+          <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px"><?php echo get_theme_mod('set_home_service_title') ?>
+          </h3>
         </div>
       </div>
       <div class="row-grid gap-half-4 transition-inner-all justify-content-center"
@@ -129,46 +130,46 @@ while (have_posts()) {
             ?>
             <!-- start fancy text box item -->
             <div class="col-grid">
-              <div class="services-box-style-01 hover-box box-shadow-quadruple-large"">
+              <div class="services-box-style-01 hover-box box-shadow-quadruple-large">
                 <div class=" position-relative box-image border-radius-6px overflow-hidden">
-                <a href="#popup-modal-<?php the_ID() ?>" class="modal-popup">
-                  <img
-                    src="<?php echo $service_image ? $service_image['sizes']['mamak_service_image'] : 'https://placehold.co/755x510' ?>"
-                    alt="<?php echo $service_image['alt'] ?>">
-                  <div class="box-overlay bg-black-transparent-medium"></div>
-                  <span
-                    class="d-flex justify-content-center align-items-center mx-auto icon-box absolute-middle-center z-index-1 w-65px h-65px rounded-circle border border-color-transparent-white border-1"><i
-                      class="bi bi-arrow-right-short text-white icon-very-medium d-flex"></i></span>
-                </a>
-              </div>
-              <div class="p-25px last-paragraph-no-margin text-center">
-                <h5 class="fs-20 text-dark-gray alt-font fw-600 mb-5px"><?php the_title() ?></h5>
-                <p class="lh-26"><?php echo wp_trim_words(get_field('srv_content'), 5, '...'); ?></p>
-              </div>
-              <div id="popup-modal-<?php the_ID() ?>"
-                class="white-popup-block mfp-hide col-xl-5 col-lg-6 col-md-7 col-11 mx-auto bg-white text-center modal-popup-main p-50px">
-                <span class="text-dark-gray fw-600 fs-24 mb-10px d-block"><?php the_title() ?></span>
-                <p><?php echo get_field('srv_content') ?></p>
-                <a class="btn btn-small btn-rounded btn-dark-gray popup-modal-dismiss mt-10px" href="#">Dismiss</a>
+                  <a href="#popup-modal-<?php the_ID() ?>" class="modal-popup">
+                    <img
+                      src="<?php echo $service_image ? $service_image['sizes']['mamak_service_image'] : 'https://placehold.co/755x510' ?>"
+                      alt="<?php echo $service_image['alt'] ?>">
+                    <div class="box-overlay bg-black-transparent-medium"></div>
+                    <span
+                      class="d-flex justify-content-center align-items-center mx-auto icon-box absolute-middle-center z-index-1 w-65px h-65px rounded-circle border border-color-transparent-white border-1"><i
+                        class="bi bi-arrow-right-short text-white icon-very-medium d-flex"></i></span>
+                  </a>
+                </div>
+                <div class="p-25px last-paragraph-no-margin text-center">
+                  <h5 class="fs-20 text-dark-gray alt-font fw-600 mb-5px"><?php the_title() ?></h5>
+                  <p class="lh-26"><?php echo wp_trim_words(get_field('srv_content'), 5, '...'); ?></p>
+                </div>
+                <div id="popup-modal-<?php the_ID() ?>"
+                  class="white-popup-block mfp-hide col-xl-5 col-lg-6 col-md-7 col-11 mx-auto bg-white text-center modal-popup-main p-50px">
+                  <span class="text-dark-gray fw-600 fs-24 mb-10px d-block"><?php the_title() ?></span>
+                  <p><?php echo get_field('srv_content') ?></p>
+                  <a class="btn btn-small btn-rounded btn-dark-gray popup-modal-dismiss mt-10px" href="#">Dismiss</a>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- end fancy text box item -->
-        <?php }
+            <!-- end fancy text box item -->
+          <?php }
         }
         wp_reset_postdata();
         ?>
-    </div>
+      </div>
     </div>
   </section>
   <!-- end section -->
   <!-- start section -->
   <?php
-  $upcoming_product = wc_get_product(get_field('upcoming_selected_product'));
-  if ($upcoming_product) {
-    $ev_start_date = get_field('prod_ev_start_date', $upcoming_product->get_id());
-    $ev_end_date = get_field('prod_ev_end_date', $upcoming_product->get_id());
-    $upcoming_product_image_url = wp_get_attachment_image_url($upcoming_product->get_image_id(), 'woocommerce_gallery_full_size');
+  $highlight_product = wc_get_product(get_field('highlight_selected_product'));
+  if ($highlight_product) {
+    $ev_start_date = get_field('prod_ev_start_date', $highlight_product->get_id());
+    $ev_end_date = get_field('prod_ev_end_date', $highlight_product->get_id());
+    $highlight_product_image_url = wp_get_attachment_image_url($highlight_product->get_image_id(), 'woocommerce_gallery_full_size');
     ?>
     <section class="background-position-center-top overflow-hidden position-relative sm-background-image-none"
       style="background-image: url('<?php echo get_theme_file_uri('assets/images/vertical-line-bg.svg') ?>')">
@@ -179,20 +180,21 @@ while (have_posts()) {
         <div class="row align-items-center justify-content-center mb-7">
           <div class="col-lg-5 md-mb-50px"
             data-anime='{ "el": "childs", "translateY": [30, 1], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue":200, "easing": "easeOutQuad" }'>
-            <span class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px">Upcoming Event</span>
-            <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px"><?php echo $upcoming_product->get_name() ?></h3>
+            <span
+              class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-base-color ls-1px"><?php echo get_field('highlight_product_subtitle') ?></span>
+            <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px"><?php echo $highlight_product->get_name() ?></h3>
             <div class="mt-50px mb-50px sm-mt-40px sm-mb-40px">
               <p class="mb-35px sm-mb-25px">
-                <?php echo wp_trim_words(wp_strip_all_tags(strip_shortcodes($upcoming_product->get_short_description())), 30); ?>
+                <?php echo wp_trim_words(wp_strip_all_tags(strip_shortcodes($highlight_product->get_short_description())), 30); ?>
               </p>
               <?php if ($ev_start_date) { ?>
                 <?php get_template_part('template-parts/partials/content', 'ev-schedule', ['ev_start_date' => $ev_start_date, 'ev_end_date' => $ev_end_date]) ?>
               <?php } ?>
-              <span class="upcoming-ev-price d-block mb-3"><?php echo $upcoming_product->get_price_html() ?></span>
-              <a href="<?php echo esc_url($upcoming_product->get_permalink()) ?>"
+              <span class="highlight-ev-price d-block mb-3"><?php echo $highlight_product->get_price_html() ?></span>
+              <a href="<?php echo esc_url($highlight_product->get_permalink()) ?>"
                 class="btn btn-gradient-emerald-blue-emerald-green btn-hover-animation-switch btn-round-edge btn-box-shadow">
                 <span>
-                  <span class="btn-text">Get Ticket Now!</span>
+                  <span class="btn-text"><?php echo get_field('highlight_product_cta_text') ?></span>
                   <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
                   <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
                 </span>
@@ -203,7 +205,7 @@ while (have_posts()) {
             data-anime='{ "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
             <!-- start popup video https://placehold.co/800x786 -->
             <figure class="position-relative mb-0 border-radius-6px overflow-hidden">
-              <img src="<?php echo $upcoming_product_image_url ?>" class="w-100 border-radius-6px" alt="">
+              <img src="<?php echo $highlight_product_image_url ?>" class="w-100 border-radius-6px" alt="">
               <!-- <a href="https://www.youtube.com/watch?v=cfXHhfNy7tU"
                 class="absolute-middle-center text-center rounded-circle video-icon-box video-icon-large popup-vimeo">
                 <span>
@@ -257,9 +259,22 @@ while (have_posts()) {
           </div>
         </div>
         <div class="col-xxl-8 col-xl-9 col-lg-10 position-relative text-center">
-          <h5 class="alt-font text-dark-gray fw-500 mb-0 fancy-text-style-4 font-style-italic ls-minus-1px">Committed to
-            providing solutions for <span class="fw-700"
-              data-fancy-text='{ "effect": "rotate", "string": ["contract creation", "commercial affairs", "negotiation support"] }'></span>
+          <?php
+          $set_home_banner1_secondary_text = get_theme_mod('set_home_banner1_secondary_text');
+          $text_data = [];
+          if ($set_home_banner1_secondary_text) {
+            foreach ($set_home_banner1_secondary_text as $item) {
+              array_push($text_data, $item['secondary_text']);
+            }
+          }
+          ?>
+          <h5 class="alt-font text-dark-gray fw-500 mb-0 fancy-text-style-4 font-style-italic ls-minus-1px">
+            <?php echo get_theme_mod('set_home_banner1_main_text') ?>&nbsp;<span class="fw-700"
+              data-fancy-text='{ "effect": "rotate", "string": <?php if ($text_data) {
+                echo json_encode($text_data);
+              } else {
+                echo '';
+              } ?> }'></span>
           </h5>
         </div>
         <div class="col-lg-1 p-0">
@@ -276,17 +291,15 @@ while (have_posts()) {
       <div class="row justify-content-center mb-1">
         <div class="col-lg-7 text-center"
           data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-          <span class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px">Stay new update</span>
+          <span class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-base-color ls-1px">Stay new update</span>
           <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px">Latest News.</h3>
           </h3>
         </div>
       </div>
       <div class="row">
         <div class="col-12 px-0">
-          <ul
-            class="blog-grid blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-double-extra-large"
-            data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1000, "willchange": "transform", "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-            <li class="grid-sizer"></li>
+          <ul class="blog-grid row-grid gap-half-4"
+            data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
             <?php
             $latestPostsArgs = [
               'post_type' => 'post',        // Atau custom post type seperti 'project'
@@ -300,12 +313,12 @@ while (have_posts()) {
                 $latestPosts->the_post();
                 ?>
                 <!-- start blog item -->
-                <li class="grid-item">
+                <li class="col-grid">
                   <?php get_template_part('template-parts/partials/content', 'blog') ?>
                 </li>
                 <!-- end blog item -->
               <?php }
-            } 
+            }
             wp_reset_postdata();
             ?>
           </ul>
@@ -314,7 +327,26 @@ while (have_posts()) {
     </div>
   </section>
   <!-- end section -->
-  <?php
+  <?php if (true == get_theme_mod('set_home_is_show_newsletter', true)) { ?>
+    <!-- start section -->
+    <section class="bg-very-light-gray">
+      <div class="container position-relative pt-3 pb-3">
+        <div class="position-absolute left-0px top-0px background-no-repeat background-size-100 h-100 w-100 animation-float"
+          style="background-image: url('<?php echo get_theme_file_uri('assets/images/subscribe-plane-img.webp') ?>')"></div>
+        <!-- start subscribe item -->
+        <div class="row justify-content-center">
+          <div class="col-12 col-xl-8 col-md-10 text-center">
+            <h2 class="text-dark-gray alt-font fw-700 ls-minus-1px mb-6">
+              <?php echo get_theme_mod('set_home_newsletter_title') ?></h2>
+            <?php echo do_shortcode('[newsletter_form form="1" button_label="Subs"]') ?>
+          </div>
+        </div>
+        <!-- end subscribe item -->
+      </div>
+    </section>
+    <!-- end section -->
+  <?php } ?>
+<?php
 }
 get_footer();
 ?>

@@ -214,7 +214,8 @@ function archive_product_hooks_customizations()
 
   function mamak_custom_product_loop_start($html)
   {
-    $html = '<ul class="shop-modern shop-wrapper grid-loading grid grid-3col xl-grid-3col sm-grid-2col xs-grid-1col gutter-extra-large text-center" data-anime=\'{ "el": "childs", "translateY": [-15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }\'><li class="grid-sizer"></li>';
+    // $html = '<ul class="shop-modern shop-wrapper grid-loading grid grid-3col xl-grid-3col sm-grid-2col xs-grid-1col gutter-extra-large text-center" data-anime=\'{ "el": "childs", "translateY": [-15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }\'><li class="grid-sizer"></li>';
+    $html = '<ul class="shop-modern row-grid grid-product grid text-center" data-anime=\'{ "el": "childs", "translateY": [-15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }\'>';
     return $html;
   }
 

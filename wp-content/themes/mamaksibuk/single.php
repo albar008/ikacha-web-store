@@ -38,22 +38,45 @@ if (have_posts()):
 			</div>
 		</section>
 		<!-- end section -->
-		<!-- start section -->
-		<section class="pb-0 pt-md-0 ps-13 pe-13 lg-ps-4 lg-pe-4 sm-p-0">
-			<div class="container-fluid">
-				<div class="row justify-content-center">
-					<div class="col-12"><img src="<?php echo get_the_post_thumbnail_url() ?>" class="w-100" alt=""></div>
+		<?php if (has_post_thumbnail()) { ?>
+			<!-- start section -->
+			<section class="pb-0 pt-md-0 ps-13 pe-13 lg-ps-4 lg-pe-4 sm-p-0">
+				<div class="container-fluid">
+					<div class="row justify-content-center">
+						<div class="col-12"><img src="<?php echo get_the_post_thumbnail_url() ?>" class="w-100" alt=""></div>
+					</div>
 				</div>
-			</div>
-		</section>
-		<!-- end section -->
+			</section>
+			<!-- end section -->
+		<?php } ?>
 		<!-- start section -->
-		<section class="pb-0">
+		<section class="pb-0 <?php if (!has_post_thumbnail()) {
+			echo "pt-0";
+		} ?>">
 			<div class="container">
 				<div class="row justify-content-center"
 					data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
 					<div class="col-lg-10">
-						<?php echo get_the_content() ?>
+						<article>
+							<?php the_content() ?>
+							<?php
+							// Harus di dalam loop
+							$link_pages = wp_link_pages([
+								// 'next_or_number' => 'next',
+								'before' => '<div class="com-single-page-links-container">Pages: ',
+								'after' => '</div>',
+								'nextpagelink' => '<span class="next-page">Next Page</span>',
+								'previouspagelink' => '<span class="prev-page">Previous Page</span>',
+								'next_or_number' => 'next',
+								'echo' => 0,
+							]);
+
+							if (!empty($link_pages)) {
+								echo $link_pages;
+							}
+
+							?>
+						</article>
 					</div>
 				</div>
 			</div>
@@ -68,7 +91,7 @@ if (have_posts()):
 							<div
 								data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'
 								class="col-12 text-center elements-social social-icon-style-04">
-								<?php echo do_shortcode('[addtoany]'); ?>
+								<?php //echo do_shortcode('[addtoany]'); ?>
 							</div>
 						</div>
 					</div>

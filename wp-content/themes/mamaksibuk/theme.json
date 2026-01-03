@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "description": "Tema kustom untuk proyek WordPress",
+  "version": 3,
+  "settings": {
+    "layout": {
+      "contentSize": "840px",
+      "wideSize": "1000px"
+    },
+    "blocks": {
+      "core/heading": {
+        "spacing": {
+          "margin": true,
+          "padding": true
+        }
+      }
+    }
+  }
+}

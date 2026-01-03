@@ -4,8 +4,12 @@ if (!defined('ABSPATH')) {
   die;
 }
 
+/**
+ *? Icon dapat dilihat di <a target="_blank" href="/feather-icons">Feather Icons</a>, <a target="_blank" href="/font-awesome">Font Awesome</a>, <a target="_blank" href="/bs-icons">Bootstrap Icons</a>, <a target="_blank" href="/icons-mind">Icons Mind</a>, or <a target="_blank" href="/themify">Themify</a>. Copy nama icon-nya dan paste disini
+ */
+
 define('STRICT_ROLES', ['web_manager', 'shop_manager']);
-define('STRICT_PAGES', ['home', 'about']);
+define('STRICT_PAGES', ['home', 'about', 'privacy-policy']);
 
 /**
  * Get information about available image sizes
@@ -130,6 +134,22 @@ if (!function_exists('woocommerce_breadcrumb')) {
   }
 }
 
+function myCustomBlocks()
+{
+  register_block_style('core/quote', [
+    'name' => 'my-custom-block-quote--primary',
+    'label' => 'Primary Style',
+  ]);
+  register_block_style('core/quote', [
+    'name' => 'my-custom-block-quote--secondary',
+    'label' => 'Secondary Style',
+  ]);
+
+  register_block_type_from_metadata(__DIR__ . '/build/general-heading-block');
+}
+
+add_action('init', 'myCustomBlocks');
+
 # Remove Editor support for specific page
 add_action('admin_init', function () {
   global $pagenow;
@@ -154,6 +174,7 @@ add_action('admin_init', function () {
   }
 });
 
+// Untuk classic Editor
 function perm($return, $id, $new_title, $new_slug)
 {
 
@@ -232,9 +253,11 @@ function mamak_config()
   add_theme_support('wc-product-gallery-lightbox');
   add_theme_support('wc-product-gallery-slider');
   add_theme_support('editor-styles');
+
   add_editor_style(['build/rich-text-custom-formats.css']);
 
   add_image_size('mamak_slider_image', 1920, 1100, true);
+  add_image_size('mamak_slider_image2', 1920, 600, true);
   add_image_size('mamak_blog_image', 600, 430, true);
   add_image_size('mamak_about_image', 800, 770, true);
   add_image_size('mamak_service_image', 755, 510, true);
@@ -487,9 +510,9 @@ function filter_post_name($data, $postarr, $unsanitized_postarr)
 }
 add_filter('wp_insert_post_data', 'filter_post_name', 10, 3);
 
-add_action('admin_menu', function () {
-  remove_submenu_page('themes.php', 'nav-menus.php');
-});
+// add_action('admin_menu', function () {
+//   remove_submenu_page('themes.php', 'nav-menus.php');
+// });
 function hide_admin_role_for_non_admins($roles)
 {
 
@@ -572,7 +595,7 @@ function mytheme_comment($comment, $args, $depth)
   <li>
     <div class="d-block d-md-flex w-100 align-items-center align-items-md-start ">
       <div class="w-90px sm-w-65px sm-mb-10px">
-        <img src="https://placehold.co/130x130" class="rounded-circle" alt="">
+        <img src="<?php echo get_avatar_url($comment, ['size' => 130]); ?>" class="rounded-circle" alt="Avatar Comment">
       </div>
       <div class="w-100 ps-30px last-paragraph-no-margin sm-ps-0">
         <a href="#" class="text-dark-gray fw-500"><?php echo $comment->comment_author ?></a>
@@ -617,6 +640,21 @@ function mo_comment_fields_custom_order($fields)
   }
   return $fields;
 }
+
+// BLOCKS
+function add_custom_block_categories($block_categories, $editor_context)
+{
+  array_push(
+    $block_categories,
+    array(
+      'slug' => 'alb-blocks',
+      'title' => 'Albar\'s Blocks',
+      'icon' => null,
+    )
+  );
+  return $block_categories;
+}
+add_filter('block_categories_all', 'add_custom_block_categories', 10, 2);
 
 // Remove
 remove_action('wp_head', 'rsd_link');

@@ -1,6 +1,19 @@
 @use 'sass:color';
 @use '../mixins';
 
+.shop-modern {
+  padding-inline: 1rem;
+  margin-inline: 0;
+
+  @media (min-width: 768px) {
+    padding-inline: 0;
+  }
+
+  .shop-image {
+    border-radius: 6px;
+  }
+}
+
 .shop-image .lable.sale {
   background-color: var(--golden-yellow);
 }
@@ -108,6 +121,17 @@
         border-top: var(--size) solid black;
         top: 50%;
       }
+    }
+  }
+
+  #reviews #comment {
+    height: auto;
+  }
+
+  .woocommerce-product-gallery__wrapper {
+    >div {
+      border-radius: 6px;
+      overflow: hidden;
     }
   }
 }
@@ -309,5 +333,23 @@ div[data-block-name="woocommerce/checkout"] {
     ul li {
       list-style-type: initial;
     }
+  }
+}
+
+.comment-form-cookies-consent {
+  justify-content: start;
+  align-items: center;
+  // display: inline-flex;
+  margin-top: 2rem !important;
+
+  #wp-comment-cookies-consent {
+    width: auto;
+    display: inline-block;
+    flex: 1;
+    margin-right: 10px;
+  }
+
+  label {
+    flex: 7;
   }
 }

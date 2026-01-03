@@ -3,8 +3,8 @@ Contributors: ElliotVS, RelyWP
 Tags: cloudflare,turnstile,captcha,protect,spam
 Donate link: https://github.com/sponsors/ElliotSowersby/
 Requires at least: 4.7
-Tested up to: 6.8
-Stable Tag: 1.35.0
+Tested up to: 6.9
+Stable Tag: 1.36.1
 License: GPLv3 or later.
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -75,6 +75,9 @@ The plugin includes several other features and options:
 * Disable Submit Button: Disable the submit button on forms until the Turnstile challenge is completed.
 * Custom Error Message: Set your own custom error message for failed submissions.
 * Whitelist: Prevent Turnstile from showing for logged in users, or certain IP addresses (wildcards are not supported).
+* Resource Hint (Preconnect): Option to enable resource hint preconnect for improved performance.
+* Failsafe Mode: Option to enable failsafe mode. When Cloudflare is down, this mode will either allow submissions, or fallback to reCAPTCHA.
+* Debug Logging: Enable debug logging of Turnstile form submission events to help with troubleshooting.
 
 ## Getting Started ##
 
@@ -204,6 +207,19 @@ If you are still having issues, please post a <a href="https://wordpress.org/sup
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/simple-cloudflare-turnstile)
 
 == Changelog ===
+
+= Version 1.36.1 - 31st December 2025 =
+- Fix: Fixed an issue with the disable submit feature not working in some cases.
+
+= Version 1.36.0 - 30th December 2025 =
+- New: Added new "Failsafe Mode" option in the advanced settings.
+- New: Added the ability to enable and set a custom "widget label text" that is shown above the Turnstile widget.
+- New: Added an option to enable "Resource Hint (Preconnect)" in the advanced settings.
+- Tweak: Improved the code for getting the user IP address for the Turnstile verification request. Helps with certain server setups and proxy services.
+- Tweak: Changed Turnstile default render to "auto" instead of "explicit".
+- Tweak: Removed the user ID check on WordPress login Turnstile check, so it still runs if the username is invalid.
+- Tweak: Added "header" info to the debug log entries.
+- Fix: Fixed an issue with Kadence Forms integration in some cases.
 
 = Version 1.35.0 - 27th October 2025 =
 - New: Improvement to Elementor integration to work better with Elementor element caching.

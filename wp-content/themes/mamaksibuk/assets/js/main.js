@@ -440,7 +440,7 @@
 
         if (!$('header').hasClass('sticky') && ($('.top-space-margin').length || $('.top-space-padding').length) || $('.ipad-top-space-margin').length) {
             var headerHeight = getHeaderHeight();
-            console.log("AEARA", headerHeight)
+            // console.log("AEARA", headerHeight)
             if ($('.top-space-margin').length) {
                 $('.top-space-margin').css('margin-top', headerHeight);
             }
@@ -448,7 +448,7 @@
                 $('.top-space-padding').css('padding-top', headerHeight);
             }
             if ($('.ipad-top-space-margin').length) {
-                console.log("headerHeight", getWindowWidth(), menuBreakPoint)
+                // console.log("headerHeight", getWindowWidth(), menuBreakPoint)
                 if (getWindowWidth() <= menuBreakPoint && !siteLocalData.is_admin_bar_show) {
                     $('.ipad-top-space-margin').css('margin-top', headerHeight);
                 } else {
@@ -1940,7 +1940,7 @@
                 for (var x in response.data) {
                     if (x < parseInt(total)) {
                         if (response.data[x]['media_type'] == 'IMAGE' || response.data[x]['media_type'] == 'CAROUSEL_ALBUM') {
-                            console.log('image');
+                            // console.log('image');
                             var link = response.data[x]['permalink'] || '',
                                     image = response.data[x]['media_url'] || '',
                                     likes = response.data[x]['like_count'] || '',
@@ -2429,19 +2429,29 @@
 
         // Sticky nav Start
         var navHeight = 0,
-                miniHeaderHeight = 0;
+                miniHeaderHeight = 0,
+                wpAdminBarHeight = 0;
         if ($('header nav.navbar').length) {
             navHeight = $('header nav.navbar').outerHeight();
         }
+        if(siteLocalData.is_admin_bar_show){
+            wpAdminBarHeight = $('#wpadminbar').outerHeight();
+            $('.navbar').css({'top': wpAdminBarHeight});
+        }
         if ($('.header-top-bar').length) {
             miniHeaderHeight = $('.header-top-bar').outerHeight();
+            if (siteLocalData.is_admin_bar_show){
+                $('.header-top-bar').css({'position': 'relative'})
+                miniHeaderHeight = 0;
+                wpAdminBarHeight = 0;
+            }
         }
         var headerHeight = navHeight + miniHeaderHeight;
         if (!$('header').hasClass('no-sticky')) {
             if (scrollPos >= headerHeight) {
                 $('header').addClass('sticky');
                 if (!$('.header-top-bar').is(':hidden')) {
-                    $('.header-top-bar').css({'top': '-' + (miniHeaderHeight) + 'px'});
+                    $('.header-top-bar').css({'top': '-' + (miniHeaderHeight + wpAdminBarHeight) + 'px'});
                     $('.header-top-bar + .navbar').css({'top': '0px'});
                 } else {
                     $('.header-top-bar, .header-top-bar + .navbar').css({'top': ''});
@@ -2450,7 +2460,7 @@
                 $('header').removeClass('sticky');
                 if (!$('.header-top-bar').is(':hidden')) {
                     $('.header-top-bar').css({'top': '0px'});
-                    $('.header-top-bar + .navbar').css({'top': (miniHeaderHeight) + 'px'});
+                    $('.header-top-bar + .navbar').css({'top': (miniHeaderHeight + wpAdminBarHeight) + 'px'});
                 } else {
                     $('.header-top-bar, .header-top-bar + .navbar').css({'top': ''});
                 }
@@ -2461,11 +2471,31 @@
         if (scrollPos > (headerHeight + 150)) {
             setTimeout(function () {
                 $('header').addClass('sticky-active');
+                if(siteLocalData.is_admin_bar_show){
+                    wpAdminBarHeight = $('#wpadminbar').outerHeight();
+                    $('.navbar').css({'top': wpAdminBarHeight});
+                }
             }, headerTransition); // Header transition effect time
         }
         if (scrollPos < headerHeight) {
             setTimeout(function () {
                 $('header').removeClass('sticky-active');
+                // $('.navbar').css({'top': miniHeaderHeight + wpAdminBarHeight});
+                if ($('.header-top-bar').length) {
+                    if(siteLocalData.is_admin_bar_show){
+                        wpAdminBarHeight = $('#wpadminbar').outerHeight();
+                        $('.navbar').css({'top': ''});
+                    }
+                }else{
+                    if(siteLocalData.is_admin_bar_show){
+                         wpAdminBarHeight = $('#wpadminbar').outerHeight();
+                         const navPosition = $(".navbar").css("position");
+                         if (navPosition==='relative'){
+                            wpAdminBarHeight = 0;
+                         }
+                         $('.navbar').css({'top': wpAdminBarHeight});
+                    }
+                }
             }, headerTransition); // Header transition effect time
         }
 

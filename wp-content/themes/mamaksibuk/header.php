@@ -45,8 +45,7 @@ if (!function_exists('wp_body_open')) {
   <!-- start header -->
   <header>
     <!-- start navigation -->
-    <nav
-      class="navbar navbar-expand-lg header-transparent bg-transparent disable-fixed">
+    <nav class="navbar navbar-expand-lg header-transparent bg-transparent disable-fixed">
       <div class="container-fluid">
         <div class="col-auto col-lg-2 me-lg-0 me-auto">
           <a class="navbar-brand" href="<?php echo esc_url(site_url('/')) ?>">
@@ -71,12 +70,22 @@ if (!function_exists('wp_body_open')) {
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav alt-font">
-              <li class="nav-item <?php if(is_front_page()) echo "active" ?>"><a href="<?php echo esc_url(site_url('/')) ?>" class="nav-link">Home</a></li>
-              <li class="nav-item <?php if(is_page('about')) echo "active" ?>"><a href="<?php echo esc_url(site_url('about')) ?>" class="nav-link">Who we are</a>
+              <li class="nav-item <?php if (is_front_page())
+                echo "active" ?>"><a
+                    href="<?php echo esc_url(site_url('/')) ?>" class="nav-link">Home</a></li>
+              <li class="nav-item <?php if (is_page('about'))
+                echo "active" ?>"><a
+                    href="<?php echo esc_url(site_url('about')) ?>" class="nav-link">Who we are</a>
               </li>
-              <li class="nav-item <?php if(is_shop() or is_product() or is_cart() or is_checkout()) echo "active" ?>"><a href="<?php echo esc_url(site_url('shop')) ?>" class="nav-link">Shop</a></li>
-              <li class="nav-item <?php if(get_post_type() === 'post') echo "active" ?>"><a href="<?php echo esc_url(site_url('blog')) ?>" class="nav-link">Blog</a></li>
-              <li class="nav-item <?php if(is_page('contact')) echo "active" ?>"><a href="<?php echo esc_url(site_url('contact')) ?>" class="nav-link">Contact</a>
+              <li class="nav-item <?php if (is_shop() or is_product() or is_cart() or is_checkout())
+                echo "active" ?>"><a
+                    href="<?php echo esc_url(site_url('shop')) ?>" class="nav-link">Shop</a></li>
+              <li class="nav-item <?php if (get_post_type() === 'post')
+                echo "active" ?>"><a
+                    href="<?php echo esc_url(site_url('blog')) ?>" class="nav-link">Blog</a></li>
+              <li class="nav-item <?php if (is_page('contact'))
+                echo "active" ?>"><a
+                    href="<?php echo esc_url(site_url('contact')) ?>" class="nav-link">Contact</a>
               </li>
             </ul>
           </div>
@@ -109,8 +118,8 @@ if (!function_exists('wp_body_open')) {
       <span class="close-menu text-white bg-dark-gray"><i class="fa-solid fa-xmark"></i></span>
       <div class="push-menu-wrapper" data-scroll-options='{ "theme": "dark" }'>
         <div class="push-menu-header pt-10 pb-30 mb-30 d-block">
-          <h4 class="alt-font fw-500 text-white lh-42">Scalable business for <span
-              class="text-decoration-line-bottom-medium fw-700">startups</span></h4>
+          <h4 class="alt-font fw-500 text-white lh-42">
+            <?php echo wp_kses_post(wp_specialchars_decode(get_theme_mod('set_off_canvas_title'))) ?></h4>
         </div>
         <div class="push-menu-address pt-30 lg-pt-10">
           <div class="icon-with-text-style-01 mb-15px">
@@ -119,7 +128,7 @@ if (!function_exists('wp_body_open')) {
                 <i class="feather icon-feather-map-pin text-dark-gray lh-inherit"></i>
               </div>
               <div class="feature-box-content">
-                <p class="w-90 lh-26">401 Broadway, 24th Floor New York, NY 10013.</p>
+                <p class="w-90 lh-26"><?php the_field('comp_address', 'option'); ?></p>
               </div>
             </div>
           </div>
@@ -129,7 +138,8 @@ if (!function_exists('wp_body_open')) {
                 <i class="feather icon-feather-mail text-dark-gray lh-inherit"></i>
               </div>
               <div class="feature-box-content">
-                <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+                <a href="mailto:<?php the_field('comp_email', 'option'); ?>"
+                    class="d-block text-base-color-hover"><?php the_field('comp_email', 'option'); ?></a>
               </div>
             </div>
           </div>
@@ -139,7 +149,8 @@ if (!function_exists('wp_body_open')) {
                 <i class="feather icon-feather-phone-call text-dark-gray lh-inherit"></i>
               </div>
               <div class="feature-box-content">
-                <a href="tel:1800222000">1-800-222-000</a>
+                <a href="tel:<?php the_field('comp_phone_number', 'option'); ?>"
+                      class="text-base-color-hover"><?php the_field('comp_phone_number', 'option'); ?></a>
               </div>
             </div>
           </div>
@@ -148,13 +159,17 @@ if (!function_exists('wp_body_open')) {
         <div class="push-menu-social last-paragraph-no-margin">
           <div class="elements-social social-text-style-01">
             <ul class="medium-icon dark fw-500">
-              <li><a class="facebook" href="https://www.facebook.com/" target="_blank">Fb.</a></li>
-              <li><a class="linkedin" href="http://www.linkedin.com" target="_blank">In.</a></li>
-              <li><a class="twitter" href="http://www.twitter.com" target="_blank">Tw.</a></li>
-              <li><a class="dribbble" href="http://www.dribbble.com" target="_blank">Dr.</a></li>
+              <?php if (have_rows('comp_sosmed_links', 'option')) {
+                while (have_rows('comp_sosmed_links', 'option')) {
+                  the_row();
+                  ?>
+                  <li><a rel="noopener noreferrer" href="<?php echo get_sub_field('comp_sosmed_url') ?>" target="_blank"><i
+                        class="<?php echo get_sub_field('comp_sosmed_icon') ?>"></i></a></li>
+                <?php }
+              } ?>
             </ul>
           </div>
-          <p class="fs-14">&COPY; Copyright 2025 <a href="<?php echo esc_url(site_url('/')) ?>">Mamaksibuk</a></p>
+          <p class="fs-14"><?php echo wp_kses_post(wp_specialchars_decode(get_theme_mod('set_copyright_text'))) ?></p>
         </div>
       </div>
     </div>

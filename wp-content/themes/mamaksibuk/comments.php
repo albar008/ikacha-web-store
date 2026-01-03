@@ -8,7 +8,7 @@ if (comments_open() || get_comments_number()) {
   // print_r($comments);
   ?>
   <!-- start section -->
-  <section class="pb-0">
+  <section class="<?php if (comments_open()) {echo "pb-0";} ?>">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-9 text-center mb-2">
@@ -31,28 +31,30 @@ if (comments_open() || get_comments_number()) {
   </section>
   <!-- end section -->
 <?php } ?>
-<!-- start section -->
-<section id="comments">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-9 mb-3 sm-mb-6">
-        <h6 class="alt-font fw-600 text-dark-gray mb-5px">Write a comment</h6>
-        <div class="mb-5px">Your email address will not be published. Required fields are marked *</div>
+<?php if (comments_open()) { ?>
+  <!-- start section -->
+  <section id="comments">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9 mb-3 sm-mb-6">
+          <h6 class="alt-font fw-600 text-dark-gray mb-5px">Write a comment</h6>
+          <div class="mb-5px">Your email address will not be published. Required fields are marked *</div>
+        </div>
       </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-lg-9 position-relative z-index-1">
-        <?php
-        comment_form(
-          [
-            'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label>'.' '.wp_required_field_indicator().'<br /><textarea class="form-control" id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required></textarea></p>',
-            'class_submit' => 'btn btn-dark-gray btn-small btn-round-edge submit'
-          ]
-        );
-        ?>
+      <div class="row justify-content-center">
+        <div class="col-lg-9 position-relative z-index-1">
+          <?php
+          comment_form(
+            [
+              'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x('Comment', 'noun') . '</label>' . ' ' . wp_required_field_indicator() . '<br /><textarea class="form-control" id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required></textarea></p>',
+              'class_submit' => 'btn btn-dark-gray btn-small btn-round-edge submit',
+              'title_reply_before' => '<h3 id="reply-title" class="text-dark-gray ls-minus-2px alt-font">'
+            ]
+          );
+          ?>
+        </div>
       </div>
-    </div>
-    <!-- <div class="row justify-content-center">
+      <!-- <div class="row justify-content-center">
       <div class="col-lg-9 position-relative z-index-1">
         <form action="email-templates/contact-form.php" method="post" class="row contact-form-style-02">
           <div class="col-md-6 mb-30px">
@@ -75,6 +77,7 @@ if (comments_open() || get_comments_number()) {
         </form>
       </div>
     </div> -->
-  </div>
-</section>
-<!-- end section -->
+    </div>
+  </section>
+  <!-- end section -->
+<?php } ?>

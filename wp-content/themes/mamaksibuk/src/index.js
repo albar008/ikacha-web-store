@@ -1,7 +1,6 @@
 
 import '../assets/css/responsive.css';
 import '../assets/css/template.css';
-import '../assets/scss/rich-text-formats.scss';
 import '../assets/scss/main.scss';
 import '../assets/js/main';
 

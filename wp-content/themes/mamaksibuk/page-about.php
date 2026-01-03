@@ -5,10 +5,10 @@ while (have_posts()) {
   ?>
   <!-- start page title -->
   <?php
-  $image_header = get_field('about_header_img');
+  $image_header = get_field('page_header_img');
   ?>
   <section
-    class="page-title-big-typography bg-dark-gray ipad-top-space-margin xs-py-0 cover-background background-position-center-top"
+    class="page-title-big-typography bg-dark-gray xs-py-0 cover-background background-position-center-top"
     style="background-image: url('<?php echo $image_header ? $image_header['sizes']['mamak_slider_image'] : 'https://placehold.co/1920x1100' ?>')">
     <div class="opacity-extra-medium bg-gradient-black-green"></div>
     <div class="container">
@@ -17,11 +17,11 @@ while (have_posts()) {
           data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 400, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'>
           <div>
             <h1 class="text-uppercase mb-15px alt-font text-white opacity-6 fw-500 ls-2px"
-              data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["<?php echo get_field('about_header_subtitle') ?>"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'>
+              data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["<?php echo get_field('page_header_subtitle') ?>"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'>
             </h1>
           </div>
           <h2 class="m-auto text-white alt-font text-shadow-double-large fw-700"
-            data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["<?php echo get_field('about_header_title') ?>"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'>
+            data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["<?php echo get_field('page_header_title') ?>"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'>
           </h2>
         </div>
       </div>
@@ -62,7 +62,7 @@ while (have_posts()) {
             <div class="text-w-image__content"
               data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
               <span
-                class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px"><?php echo get_field('about_sec_subtitle') ?></span>
+                class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-base-color ls-1px"><?php echo get_field('about_sec_subtitle') ?></span>
               <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px mb-3">
                 <?php echo get_field('about_sec_title') ?>
               </h3>
@@ -95,7 +95,7 @@ while (have_posts()) {
         <div class="col-lg-7 text-center"
           data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
           <span
-            class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px"><?php echo get_field('core_value_sec_subtitle') ?></span>
+            class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-base-color ls-1px"><?php echo get_field('core_value_sec_subtitle') ?></span>
           <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px">
             <?php echo get_field('core_value_sec_title') ?>
           </h3>
@@ -141,7 +141,7 @@ while (have_posts()) {
         <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-10 text-center text-lg-start"
           data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
           <div class="vision-container">
-            <div class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px">
+            <div class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-base-color ls-1px">
               <?php echo get_field('comp_vision_sec_subtitle') ?>
             </div>
             <h3 class="alt-font text-dark-gray mb-30px md-mb-25px fw-600 ls-minus-1px">
@@ -208,7 +208,7 @@ while (have_posts()) {
         <div class="col-xl-5 offset-xl-1 col-lg-6 col-md-8"
           data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
           <span
-            class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px"><?php echo get_field('comp_mission_sec_subtitle') ?></span>
+            class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-base-color ls-1px"><?php echo get_field('comp_mission_sec_subtitle') ?></span>
           <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px">
             <?php echo get_field('comp_mission_sec_title') ?>
           </h3>
@@ -234,7 +234,7 @@ while (have_posts()) {
       <div class="row justify-content-center mb-3">
         <div class="col-lg-7 text-center"
           data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-          <span class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px">Core people</span>
+          <span class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-base-color ls-1px">Core people</span>
           <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px">Expert Coach.</h3>
         </div>
       </div>
@@ -260,26 +260,30 @@ while (have_posts()) {
             }
             ?>
             <div class="col-grid text-center team-style-01 md-mb-30px">
-              <figure class="mb-0 border-radius-6px overflow-x-hidden overflow-y-hidden hover-box box-hover bg-white light-hover position-relative box-shadow-quadruple-large">
+              <figure
+                class="mb-0 border-radius-6px overflow-x-hidden overflow-y-hidden hover-box box-hover bg-white light-hover position-relative box-shadow-quadruple-large">
                 <img src="<?php echo $coach_image ? $coach_image['sizes']['large'] : 'https://placehold.co/600x759' ?>"
                   alt="<?php echo $coach_image['alt'] ?>" />
                 <figcaption class="w-100 p-30px bg-white">
                   <div class="position-relative z-index-1 overflow-hidden">
                     <span class="d-block alt-font fw-700 text-dark-gray lh-26 fs-18"><?php the_title() ?></span>
-                    <span class="text-light-opacity text-uppercase fs-15"><?php echo $coach_role_text ?></span>
-                    <div class="social-icon dynamic-container hover-text mt-20px lg-mt-10px">
-                      <?php if ($coach_fb_url) { ?>
-                        <a rel="noopener noreferrer" href="https://www.facebook.com/" target="_blank"><i
-                            class="fa-brands fa-facebook-f icon-small"></i></a>
-                      <?php } ?>
-                      <?php if ($coach_insta_url) { ?>
-                        <a rel="noopener noreferrer" href="https://www.instagram.com/" target="_blank"><i
-                            class="fa-brands fa-instagram icon-small"></i></a>
-                      <?php } ?>
-                      <?php if ($coach_linkedin_url) { ?>
-                        <a rel="noopener noreferrer" href="https://www.twitter.com/" target="_blank"><i
-                            class="fa-brands fa-linkedin-in icon-small"></i></a>
-                      <?php } ?>
+                    <span class="text-light-opacity fs-15"><?php echo $coach_role_text ?></span>
+                    <div class="social-icon hover-text mt-20px lg-mt-10px">
+                      <a rel="noopener noreferrer" href="<?php if ($coach_fb_url) {
+                        echo $coach_fb_url;
+                      } else {
+                        echo '#';
+                      } ?>" target="_blank"><i class="fa-brands fa-facebook-f icon-small"></i></a>
+                      <a rel="noopener noreferrer" href="<?php if ($coach_insta_url) {
+                        echo $coach_insta_url;
+                      } else {
+                        echo '#';
+                      } ?>" target="_blank"><i class="fa-brands fa-instagram icon-small"></i></a>
+                      <a rel="noopener noreferrer" href="<?php if ($coach_insta_url) {
+                        echo $coach_insta_url;
+                      } else {
+                        echo '#';
+                      } ?>" target="_blank"><i class="fa-brands fa-linkedin-in icon-small"></i></a>
                     </div>
                   </div>
                 </figcaption>

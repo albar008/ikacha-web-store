@@ -164,11 +164,11 @@ if(get_option('cfturnstile_woo_checkout')) {
 							}
 						}
 					}
-				// Allow customization via filter, defaults to skip when WooPayments or Stripe express is detected.
-				$skip_on_express = apply_filters( 'cfturnstile_skip_on_express_pay', ( ($payment_method === 'woocommerce_payments' || $payment_method === 'stripe') && $express_detected ), $payment_method, $payment_data, $request );
-				if ( $skip_on_express ) {
-					$skip = 1;
-				}
+					// Allow customization via filter, defaults to skip when WooPayments or Stripe express is detected.
+					$skip_on_express = apply_filters( 'cfturnstile_skip_on_express_pay', ( ($payment_method === 'woocommerce_payments' || $payment_method === 'stripe') && $express_detected ), $payment_method, $payment_data, $request );
+					if ( $skip_on_express ) {
+						$skip = 1;
+					}
 				}
 			}
 
